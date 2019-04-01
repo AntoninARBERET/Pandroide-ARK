@@ -1,0 +1,58 @@
+#nvidia/cuda                8.0-devel 
+#sudo docker run -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all --rm image:version
+#sudo docker run -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm image:version
+       
+
+#Basics
+
+apt-get update
+apt-get install sudo
+sudo apt-get install wget
+sudo apt-get install vim
+sudo apt-get install git
+# to get add-apt-repository command
+sudo apt-get install software-properties-common
+
+#Qt
+sudo apt-get install qtcreator
+
+#OpenCV
+sudo apt-get install cmake cmake-qt-gui
+mkdir ~/code
+mkdir ~/code/opencv-3.1.0
+git clone https://github.com/daveselinger/opencv.git
+cd opencv
+git checkout 3.1.0-with-cuda8
+
+sudo apt install --assume-yes build-essential cmake git pkg-config unzip ffmpeg qtbase5-dev python-dev python3-dev python-numpy python3-numpy
+sudo apt install libhdf5-dev
+sudo apt install --assume-yes libgtk-3-dev libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev
+sudo apt install --assume-yes libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
+sudo apt install --assume-yes libv4l-dev libtbb-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev
+sudo apt install --assume-yes libvorbis-dev libxvidcore-dev v4l-utils
+sudo apt install --assume-yes libvorbis-dev libxvidcore-dev v4l-utils
+
+cd ~/code/opencv-3.1.0
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D WITH_CUBLAS=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" ../opencv
+
+make -j $(($(nproc) + 1))
+sudo make install
+
+#ARK Base
+cd ~
+mkdir code/ARK
+cd code/ARK/
+git clone https://github.com/DiODeProject/KilobotArena.git
+sudo apt-get install qt5-default
+cd KilobotArena/
+qmake
+
+
+
+
+
+
+opencv2/gpu/gpu.hpp
+-DUSE_OPENCV3 
