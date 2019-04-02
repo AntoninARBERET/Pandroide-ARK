@@ -11,7 +11,7 @@ sudo apt-get install wget
 sudo apt-get install vim
 sudo apt-get install git
 # to get add-apt-repository command
-sudo apt-get install software-properties-common
+
 
 #Qt
 sudo apt-get install qtcreator
@@ -20,6 +20,7 @@ sudo apt-get install qtcreator
 sudo apt-get install cmake cmake-qt-gui
 mkdir ~/code
 mkdir ~/code/opencv-3.1.0
+cd ~/code/opencv-3.1.0
 git clone https://github.com/daveselinger/opencv.git
 cd opencv
 git checkout 3.1.0-with-cuda8
@@ -56,3 +57,5 @@ qmake
 
 opencv2/gpu/gpu.hpp
 -DUSE_OPENCV3 
+
+https://github.com/stereolabs/zed-opencv/issues/41

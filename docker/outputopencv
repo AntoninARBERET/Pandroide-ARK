@@ -1,0 +1,759 @@
+root@c7913e8e8c68:~/code/opencv-3.1.0/build# sudo make install
+-- Detected version of GNU GCC: 54 (504)
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found suitable version "1.2.8", minimum required is "1.2.3") 
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.8") 
+-- Checking for module 'gstreamer-base-1.0'
+--   No package 'gstreamer-base-1.0' found
+-- Checking for module 'gstreamer-video-1.0'
+--   No package 'gstreamer-video-1.0' found
+-- Checking for module 'gstreamer-app-1.0'
+--   No package 'gstreamer-app-1.0' found
+-- Checking for module 'gstreamer-riff-1.0'
+--   No package 'gstreamer-riff-1.0' found
+-- Checking for module 'gstreamer-pbutils-1.0'
+--   No package 'gstreamer-pbutils-1.0' found
+-- Looking for linux/videodev.h
+-- Looking for linux/videodev.h - not found
+-- Looking for linux/videodev2.h
+-- Looking for linux/videodev2.h - found
+-- Looking for sys/videoio.h
+-- Looking for sys/videoio.h - not found
+-- Checking for module 'libavresample'
+--   No package 'libavresample' found
+-- Looking for libavformat/avformat.h
+-- Looking for libavformat/avformat.h - found
+-- Looking for ffmpeg/avformat.h
+-- Looking for ffmpeg/avformat.h - not found
+-- Checking for module 'libgphoto2'
+--   No package 'libgphoto2' found
+-- found IPP (ICV version): 9.0.1 [9.0.1]
+-- at: /root/code/opencv-3.1.0/opencv/3rdparty/ippicv/unpack/ippicv_lnx
+-- CUDA detected: 8.0
+-- CUDA NVCC target flags: -D_FORCE_INLINES;-gencode;arch=compute_20,code=sm_20;-gencode;arch=compute_20,code=sm_21;-gencode;arch=compute_30,code=sm_30;-gencode;arch=compute_35,code=sm_35;-gencode;arch=compute_30,code=compute_30
+-- Could NOT find Doxygen (missing:  DOXYGEN_EXECUTABLE) 
+-- To enable PlantUML support, set PLANTUML_JAR environment variable or pass -DPLANTUML_JAR=<filepath> option to cmake
+-- Found PythonInterp: /usr/bin/python2.7 (found suitable version "2.7.12", minimum required is "2.7") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython2.7.so (found suitable exact version "2.7.12") 
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.5.2", minimum required is "3.4") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.5m.so (found suitable exact version "3.5.2") 
+-- Could NOT find JNI (missing:  JAVA_AWT_LIBRARY JAVA_JVM_LIBRARY JAVA_INCLUDE_PATH JAVA_INCLUDE_PATH2 JAVA_AWT_INCLUDE_PATH) 
+-- Could NOT find Matlab (missing:  MATLAB_MEX_SCRIPT MATLAB_INCLUDE_DIRS MATLAB_ROOT_DIR MATLAB_LIBRARIES MATLAB_LIBRARY_DIRS MATLAB_MEXEXT MATLAB_ARCH MATLAB_BIN) 
+-- VTK is not found. Please set -DVTK_DIR in CMake to VTK build directory, or to VTK install subdirectory with VTKConfig.cmake file
+-- 
+-- General configuration for OpenCV 3.1.0 =====================================
+--   Version control:               3.1.0-4-ge7a547b
+-- 
+--   Platform:
+--     Host:                        Linux 4.15.0-46-generic x86_64
+--     CMake:                       3.5.1
+--     CMake generator:             Unix Makefiles
+--     CMake build tool:            /usr/bin/make
+--     Configuration:               RELEASE
+-- 
+--   C/C++:
+--     Built as dynamic libs?:      YES
+--     C++ Compiler:                /usr/bin/c++  (ver 5.4.0)
+--     C++ flags (Release):         -fsigned-char -W -Wall -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wno-narrowing -Wno-delete-non-virtual-dtor -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -mno-avx -msse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -ffunction-sections -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+--     C++ flags (Debug):           -fsigned-char -W -Wall -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wno-narrowing -Wno-delete-non-virtual-dtor -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -mno-avx -msse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -ffunction-sections -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+--     C Compiler:                  /usr/bin/cc
+--     C flags (Release):           -fsigned-char -W -Wall -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wno-narrowing -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -mno-avx -msse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -ffunction-sections -fvisibility=hidden -O3 -DNDEBUG  -DNDEBUG
+--     C flags (Debug):             -fsigned-char -W -Wall -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wno-narrowing -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -mno-avx -msse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -ffunction-sections -fvisibility=hidden -g  -O0 -DDEBUG -D_DEBUG
+--     Linker flags (Release):
+--     Linker flags (Debug):
+--     Precompiled headers:         YES
+--     Extra dependencies:          Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Test Qt5::Concurrent Qt5::OpenGL /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libtiff.so /usr/lib/x86_64-linux-gnu/libjasper.so /usr/lib/x86_64-linux-gnu/libjpeg.so gstvideo-0.10 gstapp-0.10 gstbase-0.10 gstriff-0.10 gstpbutils-0.10 gstreamer-0.10 gobject-2.0 gmodule-2.0 gthread-2.0 glib-2.0 xml2 dc1394 v4l1 v4l2 avcodec-ffmpeg avformat-ffmpeg avutil-ffmpeg swscale-ffmpeg dl m pthread rt /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libGL.so tbb atomic cudart nppc nppi npps cublas cufft -L/usr/local/cuda/lib64
+--     3rdparty dependencies:       libwebp IlmImf
+-- 
+--   OpenCV modules:
+--     To be built:                 cudev core cudaarithm flann imgproc ml video cudabgsegm cudafilters cudaimgproc cudawarping imgcodecs photo shape videoio cudacodec highgui objdetect features2d calib3d cudafeatures2d cudalegacy cudaobjdetect cudaoptflow cudastereo stitching superres videostab python2 python3
+--     Disabled:                    world
+--     Disabled by dependency:      -
+--     Unavailable:                 java ts viz
+-- 
+--   GUI: 
+--     QT 5.x:                      YES (ver 5.5.1)
+--     QT OpenGL support:           YES (Qt5::OpenGL 5.5.1)
+--     OpenGL support:              YES (/usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libGL.so)
+--     VTK support:                 NO
+-- 
+--   Media I/O: 
+--     ZLib:                        /usr/lib/x86_64-linux-gnu/libz.so (ver 1.2.8)
+--     JPEG:                        /usr/lib/x86_64-linux-gnu/libjpeg.so (ver )
+--     WEBP:                        build (ver 0.3.1)
+--     PNG:                         /usr/lib/x86_64-linux-gnu/libpng.so (ver 1.2.54)
+--     TIFF:                        /usr/lib/x86_64-linux-gnu/libtiff.so (ver 42 - 4.0.6)
+--     JPEG 2000:                   /usr/lib/x86_64-linux-gnu/libjasper.so (ver 1.900.1)
+--     OpenEXR:                     build (ver 1.7.1)
+--     GDAL:                        NO
+-- 
+--   Video I/O:
+--     DC1394 1.x:                  NO
+--     DC1394 2.x:                  YES (ver 2.2.4)
+--     FFMPEG:                      YES
+--       codec:                     YES (ver 56.60.100)
+--       format:                    YES (ver 56.40.101)
+--       util:                      YES (ver 54.31.100)
+--       swscale:                   YES (ver 3.1.101)
+--       resample:                  NO
+--       gentoo-style:              YES
+--     GStreamer:                   
+--       base:                      YES (ver 0.10.36)
+--       video:                     YES (ver 0.10.36)
+--       app:                       YES (ver 0.10.36)
+--       riff:                      YES (ver 0.10.36)
+--       pbutils:                   YES (ver 0.10.36)
+--     OpenNI:                      NO
+--     OpenNI PrimeSensor Modules:  NO
+--     OpenNI2:                     NO
+--     PvAPI:                       NO
+--     GigEVisionSDK:               NO
+--     UniCap:                      NO
+--     UniCap ucil:                 NO
+--     V4L/V4L2:                    Using libv4l1 (ver 1.10.0) / libv4l2 (ver 1.10.0)
+--     XIMEA:                       NO
+--     Xine:                        NO
+--     gPhoto2:                     NO
+-- 
+--   Parallel framework:            TBB (ver 4.4 interface 9002)
+-- 
+--   Other third-party libraries:
+--     Use IPP:                     9.0.1 [9.0.1]
+--          at:                     /root/code/opencv-3.1.0/opencv/3rdparty/ippicv/unpack/ippicv_lnx
+--     Use IPP Async:               NO
+--     Use VA:                      NO
+--     Use Intel VA-API/OpenCL:     NO
+--     Use Eigen:                   NO
+--     Use Cuda:                    YES (ver 8.0)
+--     Use OpenCL:                  YES
+--     Use custom HAL:              NO
+-- 
+--   NVIDIA CUDA
+--     Use CUFFT:                   YES
+--     Use CUBLAS:                  YES
+--     USE NVCUVID:                 NO
+--     NVIDIA GPU arch:             20 21 30 35
+--     NVIDIA PTX archs:            30
+--     Use fast math:               NO
+-- 
+--   OpenCL:
+--     Version:                     dynamic
+--     Include path:                /root/code/opencv-3.1.0/opencv/3rdparty/include/opencl/1.2
+--     Use AMDFFT:                  NO
+--     Use AMDBLAS:                 NO
+-- 
+--   Python 2:
+--     Interpreter:                 /usr/bin/python2.7 (ver 2.7.12)
+--     Libraries:                   /usr/lib/x86_64-linux-gnu/libpython2.7.so (ver 2.7.12)
+--     numpy:                       /usr/lib/python2.7/dist-packages/numpy/core/include (ver 1.11.0)
+--     packages path:               lib/python2.7/dist-packages
+-- 
+--   Python 3:
+--     Interpreter:                 /usr/bin/python3 (ver 3.5.2)
+--     Libraries:                   /usr/lib/x86_64-linux-gnu/libpython3.5m.so (ver 3.5.2)
+--     numpy:                       /usr/lib/python3/dist-packages/numpy/core/include (ver 1.11.0)
+--     packages path:               lib/python3.5/dist-packages
+-- 
+--   Python (for build):            /usr/bin/python2.7
+-- 
+--   Java:
+--     ant:                         NO
+--     JNI:                         NO
+--     Java wrappers:               NO
+--     Java tests:                  NO
+-- 
+--   Matlab:                        Matlab not found or implicitly disabled
+-- 
+--   Documentation:
+--     Doxygen:                     NO
+--     PlantUML:                    NO
+-- 
+--   Tests and samples:
+--     Tests:                       NO
+--     Performance tests:           NO
+--     C/C++ Examples:              NO
+-- 
+--   Install path:                  /usr/local
+-- 
+--   cvconfig.h is in:              /root/code/opencv-3.1.0/build
+-- -----------------------------------------------------------------
+-- 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/code/opencv-3.1.0/build
+[  5%] Built target libwebp
+[ 14%] Built target IlmImf
+[ 14%] Built target opencv_cudev
+[ 16%] Built target opencv_core_pch_dephelp
+[ 16%] Built target pch_Generate_opencv_core
+[ 16%] Linking CXX shared library ../../lib/libopencv_core.so
+[ 22%] Built target opencv_core
+[ 22%] Built target opencv_cudaarithm_pch_dephelp
+[ 23%] Built target pch_Generate_opencv_cudaarithm
+[ 23%] Linking CXX shared library ../../lib/libopencv_cudaarithm.so
+[ 28%] Built target opencv_cudaarithm
+[ 28%] Built target opencv_flann_pch_dephelp
+[ 29%] Built target pch_Generate_opencv_flann
+[ 31%] Linking CXX shared library ../../lib/libopencv_flann.so
+[ 31%] Built target opencv_flann
+[ 31%] Built target opencv_imgproc_pch_dephelp
+[ 31%] Built target pch_Generate_opencv_imgproc
+[ 31%] Linking CXX shared library ../../lib/libopencv_imgproc.so
+[ 37%] Built target opencv_imgproc
+[ 37%] Built target opencv_ml_pch_dephelp
+[ 37%] Built target pch_Generate_opencv_ml
+[ 37%] Linking CXX shared library ../../lib/libopencv_ml.so
+[ 40%] Built target opencv_ml
+[ 40%] Built target opencv_video_pch_dephelp
+[ 40%] Built target pch_Generate_opencv_video
+[ 40%] Linking CXX shared library ../../lib/libopencv_video.so
+[ 41%] Built target opencv_video
+[ 41%] Built target opencv_cudabgsegm_pch_dephelp
+[ 41%] Built target pch_Generate_opencv_cudabgsegm
+[ 41%] Linking CXX shared library ../../lib/libopencv_cudabgsegm.so
+[ 41%] Built target opencv_cudabgsegm
+[ 41%] Built target opencv_cudafilters_pch_dephelp
+[ 41%] Built target pch_Generate_opencv_cudafilters
+[ 41%] Linking CXX shared library ../../lib/libopencv_cudafilters.so
+[ 46%] Built target opencv_cudafilters
+[ 47%] Built target opencv_cudaimgproc_pch_dephelp
+[ 47%] Built target pch_Generate_opencv_cudaimgproc
+[ 47%] Linking CXX shared library ../../lib/libopencv_cudaimgproc.so
+[ 52%] Built target opencv_cudaimgproc
+[ 53%] Built target opencv_cudawarping_pch_dephelp
+[ 53%] Built target pch_Generate_opencv_cudawarping
+[ 53%] Linking CXX shared library ../../lib/libopencv_cudawarping.so
+[ 55%] Built target opencv_cudawarping
+[ 56%] Built target opencv_imgcodecs_pch_dephelp
+[ 56%] Built target pch_Generate_opencv_imgcodecs
+[ 56%] Linking CXX shared library ../../lib/libopencv_imgcodecs.so
+[ 59%] Built target opencv_imgcodecs
+[ 61%] Built target opencv_photo_pch_dephelp
+[ 62%] Built target pch_Generate_opencv_photo
+[ 62%] Linking CXX shared library ../../lib/libopencv_photo.so
+[ 64%] Built target opencv_photo
+[ 65%] Built target opencv_shape_pch_dephelp
+[ 65%] Built target pch_Generate_opencv_shape
+[ 65%] Linking CXX shared library ../../lib/libopencv_shape.so
+[ 67%] Built target opencv_shape
+[ 67%] Built target opencv_videoio_pch_dephelp
+[ 67%] Built target pch_Generate_opencv_videoio
+[ 67%] Linking CXX shared library ../../lib/libopencv_videoio.so
+[ 68%] Built target opencv_videoio
+[ 68%] Built target opencv_cudacodec_pch_dephelp
+[ 68%] Built target pch_Generate_opencv_cudacodec
+[ 68%] Linking CXX shared library ../../lib/libopencv_cudacodec.so
+[ 70%] Built target opencv_cudacodec
+[ 70%] Automatic moc for target opencv_highgui_pch_dephelp
+[ 70%] Built target opencv_highgui_pch_dephelp_automoc
+[ 70%] Built target opencv_highgui_pch_dephelp
+[ 71%] Automatic moc for target opencv_highgui
+[ 71%] Built target opencv_highgui_automoc
+[ 71%] Built target pch_Generate_opencv_highgui
+[ 71%] Linking CXX shared library ../../lib/libopencv_highgui.so
+[ 71%] Built target opencv_highgui
+[ 73%] Built target opencv_objdetect_pch_dephelp
+[ 73%] Built target pch_Generate_opencv_objdetect
+[ 73%] Linking CXX shared library ../../lib/libopencv_objdetect.so
+[ 74%] Built target opencv_objdetect
+[ 74%] Built target opencv_features2d_pch_dephelp
+[ 74%] Built target pch_Generate_opencv_features2d
+[ 74%] Linking CXX shared library ../../lib/libopencv_features2d.so
+[ 77%] Built target opencv_features2d
+[ 77%] Built target opencv_calib3d_pch_dephelp
+[ 77%] Built target pch_Generate_opencv_calib3d
+[ 77%] Linking CXX shared library ../../lib/libopencv_calib3d.so
+[ 82%] Built target opencv_calib3d
+[ 82%] Built target opencv_cudafeatures2d_pch_dephelp
+[ 82%] Built target pch_Generate_opencv_cudafeatures2d
+[ 82%] Linking CXX shared library ../../lib/libopencv_cudafeatures2d.so
+[ 83%] Built target opencv_cudafeatures2d
+[ 85%] Built target opencv_cudalegacy_pch_dephelp
+[ 86%] Built target pch_Generate_opencv_cudalegacy
+[ 88%] Linking CXX shared library ../../lib/libopencv_cudalegacy.so
+[ 89%] Built target opencv_cudalegacy
+[ 91%] Built target opencv_cudaobjdetect_pch_dephelp
+[ 91%] Built target pch_Generate_opencv_cudaobjdetect
+[ 91%] Linking CXX shared library ../../lib/libopencv_cudaobjdetect.so
+[ 91%] Built target opencv_cudaobjdetect
+[ 91%] Built target opencv_cudaoptflow_pch_dephelp
+[ 91%] Built target pch_Generate_opencv_cudaoptflow
+[ 91%] Linking CXX shared library ../../lib/libopencv_cudaoptflow.so
+[ 91%] Built target opencv_cudaoptflow
+[ 91%] Built target opencv_cudastereo_pch_dephelp
+[ 91%] Built target pch_Generate_opencv_cudastereo
+[ 91%] Linking CXX shared library ../../lib/libopencv_cudastereo.so
+[ 92%] Built target opencv_cudastereo
+[ 92%] Built target opencv_stitching_pch_dephelp
+[ 92%] Built target pch_Generate_opencv_stitching
+[ 92%] Linking CXX shared library ../../lib/libopencv_stitching.so
+[ 94%] Built target opencv_stitching
+[ 94%] Built target opencv_superres_pch_dephelp
+[ 94%] Built target pch_Generate_opencv_superres
+[ 94%] Linking CXX shared library ../../lib/libopencv_superres.so
+[ 95%] Built target opencv_superres
+[ 95%] Built target opencv_videostab_pch_dephelp
+[ 97%] Built target pch_Generate_opencv_videostab
+[ 97%] Linking CXX shared library ../../lib/libopencv_videostab.so
+[ 98%] Built target opencv_videostab
+[ 98%] Generating pyopencv_generated_include.h, pyopencv_generated_funcs.h, pyopencv_generated_types.h, pyopencv_generated_type_reg.h, pyopencv_generated_ns_reg.h
+Scanning dependencies of target opencv_python2
+[ 98%] Building CXX object modules/python2/CMakeFiles/opencv_python2.dir/__/src2/cv2.cpp.o
+[ 98%] Linking CXX shared module ../../lib/cv2.so
+[ 98%] Built target opencv_python2
+[ 98%] Generating pyopencv_generated_include.h, pyopencv_generated_funcs.h, pyopencv_generated_types.h, pyopencv_generated_type_reg.h, pyopencv_generated_ns_reg.h
+/usr/lib/python3.5/re.py:203: FutureWarning: split() requires a non-empty pattern match.
+  return _compile(pattern, flags).split(string, maxsplit)
+Scanning dependencies of target opencv_python3
+[ 98%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2.cpp.o
+[ 98%] Linking CXX shared module ../../lib/python3/cv2.cpython-35m-x86_64-linux-gnu.so
+[ 98%] Built target opencv_python3
+[ 98%] Linking CXX executable ../../bin/opencv_traincascade
+[100%] Built target opencv_traincascade
+[100%] Linking CXX executable ../../bin/opencv_createsamples
+[100%] Built target opencv_createsamples
+[100%] Linking CXX executable ../../bin/opencv_annotation
+[100%] Built target opencv_annotation
+Install the project...
+-- Install configuration: "RELEASE"
+-- Installing: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
+-- Installing: /usr/local/include/opencv2/cvconfig.h
+-- Installing: /usr/local/include/opencv2/opencv_modules.hpp
+-- Installing: /usr/local/lib/pkgconfig/opencv.pc
+-- Installing: /usr/local/share/OpenCV/OpenCVConfig.cmake
+-- Installing: /usr/local/share/OpenCV/OpenCVConfig-version.cmake
+-- Installing: /usr/local/share/OpenCV/OpenCVModules.cmake
+-- Installing: /usr/local/share/OpenCV/OpenCVModules-release.cmake
+-- Installing: /usr/local/include/opencv/cvaux.h
+-- Installing: /usr/local/include/opencv/ml.h
+-- Installing: /usr/local/include/opencv/cv.hpp
+-- Installing: /usr/local/include/opencv/cv.h
+-- Installing: /usr/local/include/opencv/cxcore.hpp
+-- Installing: /usr/local/include/opencv/highgui.h
+-- Installing: /usr/local/include/opencv/cxmisc.h
+-- Installing: /usr/local/include/opencv/cxeigen.hpp
+-- Installing: /usr/local/include/opencv/cvwimage.h
+-- Installing: /usr/local/include/opencv/cvaux.hpp
+-- Installing: /usr/local/include/opencv/cxcore.h
+-- Installing: /usr/local/include/opencv2/opencv.hpp
+-- Installing: /usr/local/lib/libopencv_cudev.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudev.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudev.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudev.so
+-- Installing: /usr/local/include/opencv2/cudev/common.hpp
+-- Installing: /usr/local/include/opencv2/cudev/functional/detail/color_cvt.hpp
+-- Installing: /usr/local/include/opencv2/cudev/functional/color_cvt.hpp
+-- Installing: /usr/local/include/opencv2/cudev/functional/functional.hpp
+-- Installing: /usr/local/include/opencv2/cudev/functional/tuple_adapter.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/warping.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/binary_op.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/binary_func.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/expr.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/unary_func.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/color.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/deriv.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/per_element_func.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/reduction.hpp
+-- Installing: /usr/local/include/opencv2/cudev/expr/unary_op.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/detail/type_traits.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/detail/tuple.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/saturate_cast.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/atomic.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/vec_math.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/vec_traits.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/simd_functions.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/limits.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/type_traits.hpp
+-- Installing: /usr/local/include/opencv2/cudev/util/tuple.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/detail/reduce_key_val.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/detail/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/shuffle.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/warp.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/scan.hpp
+-- Installing: /usr/local/include/opencv2/cudev/warp/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/zip.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/detail/gpumat.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/warping.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/transform.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/texture.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/traits.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/constant.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/mask.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/remap.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/glob.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/interpolation.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/deriv.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/resize.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/extrapolation.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/lut.hpp
+-- Installing: /usr/local/include/opencv2/cudev/ptr2d/gpumat.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/reduce_to_row.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/transform.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/histogram.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/pyr_up.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/minmaxloc.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/pyr_down.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/copy.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/split_merge.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/integral.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/reduce_to_column.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/detail/transpose.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/transform.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/reduce_to_vec.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/histogram.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/copy.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/pyramids.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/split_merge.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/integral.hpp
+-- Installing: /usr/local/include/opencv2/cudev/grid/transpose.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/block.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/vec_distance.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/detail/reduce_key_val.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/detail/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/scan.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/reduce.hpp
+-- Installing: /usr/local/include/opencv2/cudev/block/dynamic_smem.hpp
+-- Installing: /usr/local/include/opencv2/cudev.hpp
+-- Installing: /usr/local/lib/libopencv_core.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_core.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_core.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_core.so
+-- Installing: /usr/local/include/opencv2/core/cuda/common.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/block.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/vec_distance.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/warp_shuffle.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/transform.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/saturate_cast.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/warp_reduce.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/datamov_utils.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/utility.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/warp.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/border_interpolate.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/emulation.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/vec_math.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/vec_traits.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/scan.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/color.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/simd_functions.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/functional.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/limits.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/funcattrib.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/reduce.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/type_traits.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/dynamic_smem.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/filters.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/reduce_key_val.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/type_traits_detail.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/transform_detail.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/color_detail.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/reduce.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda/detail/vec_distance_detail.hpp
+-- Installing: /usr/local/include/opencv2/core.hpp
+-- Installing: /usr/local/include/opencv2/core/wimage.hpp
+-- Installing: /usr/local/include/opencv2/core/cvstd.hpp
+-- Installing: /usr/local/include/opencv2/core/eigen.hpp
+-- Installing: /usr/local/include/opencv2/core/mat.inl.hpp
+-- Installing: /usr/local/include/opencv2/core/persistence.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda_types.hpp
+-- Installing: /usr/local/include/opencv2/core/mat.hpp
+-- Installing: /usr/local/include/opencv2/core/affine.hpp
+-- Installing: /usr/local/include/opencv2/core/fast_math.hpp
+-- Installing: /usr/local/include/opencv2/core/traits.hpp
+-- Installing: /usr/local/include/opencv2/core/directx.hpp
+-- Installing: /usr/local/include/opencv2/core/utility.hpp
+-- Installing: /usr/local/include/opencv2/core/version.hpp
+-- Installing: /usr/local/include/opencv2/core/types.hpp
+-- Installing: /usr/local/include/opencv2/core/opengl.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda.inl.hpp
+-- Installing: /usr/local/include/opencv2/core/private.cuda.hpp
+-- Installing: /usr/local/include/opencv2/core/bufferpool.hpp
+-- Installing: /usr/local/include/opencv2/core/ocl.hpp
+-- Installing: /usr/local/include/opencv2/core/saturate.hpp
+-- Installing: /usr/local/include/opencv2/core/cvstd.inl.hpp
+-- Installing: /usr/local/include/opencv2/core/operations.hpp
+-- Installing: /usr/local/include/opencv2/core/sse_utils.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda_stream_accessor.hpp
+-- Installing: /usr/local/include/opencv2/core/core.hpp
+-- Installing: /usr/local/include/opencv2/core/matx.hpp
+-- Installing: /usr/local/include/opencv2/core/ippasync.hpp
+-- Installing: /usr/local/include/opencv2/core/base.hpp
+-- Installing: /usr/local/include/opencv2/core/va_intel.hpp
+-- Installing: /usr/local/include/opencv2/core/cuda.hpp
+-- Installing: /usr/local/include/opencv2/core/optim.hpp
+-- Installing: /usr/local/include/opencv2/core/ocl_genbase.hpp
+-- Installing: /usr/local/include/opencv2/core/private.hpp
+-- Installing: /usr/local/include/opencv2/core/ptr.inl.hpp
+-- Installing: /usr/local/include/opencv2/core/neon_utils.hpp
+-- Installing: /usr/local/include/opencv2/core/types_c.h
+-- Installing: /usr/local/include/opencv2/core/cvdef.h
+-- Installing: /usr/local/include/opencv2/core/core_c.h
+-- Installing: /usr/local/include/opencv2/core/hal/intrin_sse.hpp
+-- Installing: /usr/local/include/opencv2/core/hal/intrin.hpp
+-- Installing: /usr/local/include/opencv2/core/hal/intrin_neon.hpp
+-- Installing: /usr/local/include/opencv2/core/hal/intrin_cpp.hpp
+-- Installing: /usr/local/include/opencv2/core/hal/hal.hpp
+-- Installing: /usr/local/include/opencv2/core/hal/interface.h
+-- Installing: /usr/local/lib/libopencv_cudaarithm.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudaarithm.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudaarithm.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudaarithm.so
+-- Installing: /usr/local/include/opencv2/cudaarithm.hpp
+-- Installing: /usr/local/lib/libopencv_flann.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_flann.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_flann.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_flann.so
+-- Installing: /usr/local/include/opencv2/flann.hpp
+-- Installing: /usr/local/include/opencv2/flann/miniflann.hpp
+-- Installing: /usr/local/include/opencv2/flann/flann_base.hpp
+-- Installing: /usr/local/include/opencv2/flann/flann.hpp
+-- Installing: /usr/local/include/opencv2/flann/saving.h
+-- Installing: /usr/local/include/opencv2/flann/matrix.h
+-- Installing: /usr/local/include/opencv2/flann/allocator.h
+-- Installing: /usr/local/include/opencv2/flann/heap.h
+-- Installing: /usr/local/include/opencv2/flann/simplex_downhill.h
+-- Installing: /usr/local/include/opencv2/flann/dynamic_bitset.h
+-- Installing: /usr/local/include/opencv2/flann/params.h
+-- Installing: /usr/local/include/opencv2/flann/random.h
+-- Installing: /usr/local/include/opencv2/flann/hierarchical_clustering_index.h
+-- Installing: /usr/local/include/opencv2/flann/linear_index.h
+-- Installing: /usr/local/include/opencv2/flann/sampling.h
+-- Installing: /usr/local/include/opencv2/flann/composite_index.h
+-- Installing: /usr/local/include/opencv2/flann/all_indices.h
+-- Installing: /usr/local/include/opencv2/flann/autotuned_index.h
+-- Installing: /usr/local/include/opencv2/flann/timer.h
+-- Installing: /usr/local/include/opencv2/flann/object_factory.h
+-- Installing: /usr/local/include/opencv2/flann/dummy.h
+-- Installing: /usr/local/include/opencv2/flann/logger.h
+-- Installing: /usr/local/include/opencv2/flann/defines.h
+-- Installing: /usr/local/include/opencv2/flann/dist.h
+-- Installing: /usr/local/include/opencv2/flann/kdtree_single_index.h
+-- Installing: /usr/local/include/opencv2/flann/result_set.h
+-- Installing: /usr/local/include/opencv2/flann/general.h
+-- Installing: /usr/local/include/opencv2/flann/hdf5.h
+-- Installing: /usr/local/include/opencv2/flann/ground_truth.h
+-- Installing: /usr/local/include/opencv2/flann/config.h
+-- Installing: /usr/local/include/opencv2/flann/lsh_index.h
+-- Installing: /usr/local/include/opencv2/flann/nn_index.h
+-- Installing: /usr/local/include/opencv2/flann/any.h
+-- Installing: /usr/local/include/opencv2/flann/lsh_table.h
+-- Installing: /usr/local/include/opencv2/flann/kdtree_index.h
+-- Installing: /usr/local/include/opencv2/flann/kmeans_index.h
+-- Installing: /usr/local/include/opencv2/flann/index_testing.h
+-- Installing: /usr/local/lib/libopencv_imgproc.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_imgproc.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_imgproc.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_imgproc.so
+-- Installing: /usr/local/include/opencv2/imgproc.hpp
+-- Installing: /usr/local/include/opencv2/imgproc/imgproc.hpp
+-- Installing: /usr/local/include/opencv2/imgproc/types_c.h
+-- Installing: /usr/local/include/opencv2/imgproc/imgproc_c.h
+-- Installing: /usr/local/include/opencv2/imgproc/detail/distortion_model.hpp
+-- Installing: /usr/local/lib/libopencv_ml.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_ml.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_ml.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_ml.so
+-- Installing: /usr/local/include/opencv2/ml.hpp
+-- Installing: /usr/local/include/opencv2/ml/ml.hpp
+-- Installing: /usr/local/lib/libopencv_video.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_video.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_video.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_video.so
+-- Installing: /usr/local/include/opencv2/video.hpp
+-- Installing: /usr/local/include/opencv2/video/tracking.hpp
+-- Installing: /usr/local/include/opencv2/video/video.hpp
+-- Installing: /usr/local/include/opencv2/video/background_segm.hpp
+-- Installing: /usr/local/include/opencv2/video/tracking_c.h
+-- Installing: /usr/local/lib/libopencv_cudabgsegm.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudabgsegm.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudabgsegm.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudabgsegm.so
+-- Installing: /usr/local/include/opencv2/cudabgsegm.hpp
+-- Installing: /usr/local/lib/libopencv_cudafilters.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudafilters.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudafilters.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudafilters.so
+-- Installing: /usr/local/include/opencv2/cudafilters.hpp
+-- Installing: /usr/local/lib/libopencv_cudaimgproc.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudaimgproc.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudaimgproc.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudaimgproc.so
+-- Installing: /usr/local/include/opencv2/cudaimgproc.hpp
+-- Installing: /usr/local/lib/libopencv_cudawarping.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudawarping.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudawarping.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudawarping.so
+-- Installing: /usr/local/include/opencv2/cudawarping.hpp
+-- Installing: /usr/local/lib/libopencv_imgcodecs.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_imgcodecs.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_imgcodecs.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_imgcodecs.so
+-- Installing: /usr/local/include/opencv2/imgcodecs.hpp
+-- Installing: /usr/local/include/opencv2/imgcodecs/imgcodecs.hpp
+-- Installing: /usr/local/include/opencv2/imgcodecs/ios.h
+-- Installing: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
+-- Installing: /usr/local/lib/libopencv_photo.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_photo.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_photo.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_photo.so
+-- Installing: /usr/local/include/opencv2/photo.hpp
+-- Installing: /usr/local/include/opencv2/photo/cuda.hpp
+-- Installing: /usr/local/include/opencv2/photo/photo.hpp
+-- Installing: /usr/local/include/opencv2/photo/photo_c.h
+-- Installing: /usr/local/lib/libopencv_shape.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_shape.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_shape.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_shape.so
+-- Installing: /usr/local/include/opencv2/shape.hpp
+-- Installing: /usr/local/include/opencv2/shape/emdL1.hpp
+-- Installing: /usr/local/include/opencv2/shape/shape_transformer.hpp
+-- Installing: /usr/local/include/opencv2/shape/shape_distance.hpp
+-- Installing: /usr/local/include/opencv2/shape/hist_cost.hpp
+-- Installing: /usr/local/include/opencv2/shape/shape.hpp
+-- Installing: /usr/local/lib/libopencv_videoio.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_videoio.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_videoio.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_videoio.so
+-- Installing: /usr/local/include/opencv2/videoio.hpp
+-- Installing: /usr/local/include/opencv2/videoio/videoio.hpp
+-- Installing: /usr/local/include/opencv2/videoio/videoio_c.h
+-- Installing: /usr/local/include/opencv2/videoio/cap_ios.h
+-- Installing: /usr/local/lib/libopencv_cudacodec.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudacodec.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudacodec.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudacodec.so
+-- Installing: /usr/local/include/opencv2/cudacodec.hpp
+-- Installing: /usr/local/lib/libopencv_highgui.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_highgui.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_highgui.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_highgui.so
+-- Installing: /usr/local/include/opencv2/highgui.hpp
+-- Installing: /usr/local/include/opencv2/highgui/highgui.hpp
+-- Installing: /usr/local/include/opencv2/highgui/highgui_c.h
+-- Installing: /usr/local/lib/libopencv_objdetect.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_objdetect.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_objdetect.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_objdetect.so
+-- Installing: /usr/local/include/opencv2/objdetect.hpp
+-- Installing: /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp
+-- Installing: /usr/local/include/opencv2/objdetect/objdetect.hpp
+-- Installing: /usr/local/include/opencv2/objdetect/objdetect_c.h
+-- Installing: /usr/local/lib/libopencv_features2d.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_features2d.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_features2d.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_features2d.so
+-- Installing: /usr/local/include/opencv2/features2d.hpp
+-- Installing: /usr/local/include/opencv2/features2d/features2d.hpp
+-- Installing: /usr/local/lib/libopencv_calib3d.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_calib3d.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_calib3d.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_calib3d.so
+-- Installing: /usr/local/include/opencv2/calib3d.hpp
+-- Installing: /usr/local/include/opencv2/calib3d/calib3d.hpp
+-- Installing: /usr/local/include/opencv2/calib3d/calib3d_c.h
+-- Installing: /usr/local/lib/libopencv_cudafeatures2d.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudafeatures2d.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudafeatures2d.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudafeatures2d.so
+-- Installing: /usr/local/include/opencv2/cudafeatures2d.hpp
+-- Installing: /usr/local/lib/libopencv_cudalegacy.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudalegacy.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudalegacy.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudalegacy.so
+-- Installing: /usr/local/include/opencv2/cudalegacy.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/NCVHaarObjectDetection.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/NCVPyramid.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/NPP_staging.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/NCVBroxOpticalFlow.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/NCV.hpp
+-- Installing: /usr/local/include/opencv2/cudalegacy/private.hpp
+-- Installing: /usr/local/lib/libopencv_cudaobjdetect.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudaobjdetect.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudaobjdetect.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudaobjdetect.so
+-- Installing: /usr/local/include/opencv2/cudaobjdetect.hpp
+-- Installing: /usr/local/lib/libopencv_cudaoptflow.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudaoptflow.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudaoptflow.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudaoptflow.so
+-- Installing: /usr/local/include/opencv2/cudaoptflow.hpp
+-- Installing: /usr/local/lib/libopencv_cudastereo.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_cudastereo.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_cudastereo.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_cudastereo.so
+-- Installing: /usr/local/include/opencv2/cudastereo.hpp
+-- Installing: /usr/local/lib/libopencv_stitching.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_stitching.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_stitching.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_stitching.so
+-- Installing: /usr/local/include/opencv2/stitching.hpp
+-- Installing: /usr/local/include/opencv2/stitching/warpers.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/motion_estimators.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/seam_finders.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/util_inl.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/blenders.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/autocalib.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/camera.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/timelapsers.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/warpers.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/warpers_inl.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/util.hpp
+-- Installing: /usr/local/include/opencv2/stitching/detail/matchers.hpp
+-- Installing: /usr/local/lib/libopencv_superres.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_superres.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_superres.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_superres.so
+-- Installing: /usr/local/include/opencv2/superres.hpp
+-- Installing: /usr/local/include/opencv2/superres/optical_flow.hpp
+-- Installing: /usr/local/lib/libopencv_videostab.so.3.1.0
+-- Installing: /usr/local/lib/libopencv_videostab.so.3.1
+-- Set runtime path of "/usr/local/lib/libopencv_videostab.so.3.1.0" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/libopencv_videostab.so
+-- Installing: /usr/local/include/opencv2/videostab.hpp
+-- Installing: /usr/local/include/opencv2/videostab/fast_marching_inl.hpp
+-- Installing: /usr/local/include/opencv2/videostab/inpainting.hpp
+-- Installing: /usr/local/include/opencv2/videostab/fast_marching.hpp
+-- Installing: /usr/local/include/opencv2/videostab/optical_flow.hpp
+-- Installing: /usr/local/include/opencv2/videostab/outlier_rejection.hpp
+-- Installing: /usr/local/include/opencv2/videostab/motion_core.hpp
+-- Installing: /usr/local/include/opencv2/videostab/stabilizer.hpp
+-- Installing: /usr/local/include/opencv2/videostab/frame_source.hpp
+-- Installing: /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+-- Installing: /usr/local/include/opencv2/videostab/global_motion.hpp
+-- Installing: /usr/local/include/opencv2/videostab/log.hpp
+-- Installing: /usr/local/include/opencv2/videostab/ring_buffer.hpp
+-- Installing: /usr/local/include/opencv2/videostab/deblurring.hpp
+-- Installing: /usr/local/include/opencv2/videostab/motion_stabilizing.hpp
+-- Installing: /usr/local/lib/python2.7/dist-packages/cv2.so
+-- Set runtime path of "/usr/local/lib/python2.7/dist-packages/cv2.so" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-x86_64-linux-gnu.so
+-- Set runtime path of "/usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-x86_64-linux-gnu.so" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_eye_tree_eyeglasses.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt2.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_licence_plate_rus_16stages.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_russian_plate_number.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_righteye_2splits.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_eye.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalcatface.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_smile.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalcatface_extended.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_upperbody.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt_tree.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_fullbody.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_profileface.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_lowerbody.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_lefteye_2splits.xml
+-- Installing: /usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml
+-- Installing: /usr/local/share/OpenCV/lbpcascades/lbpcascade_frontalcatface.xml
+-- Installing: /usr/local/share/OpenCV/lbpcascades/lbpcascade_silverware.xml
+-- Installing: /usr/local/share/OpenCV/lbpcascades/lbpcascade_frontalface.xml
+-- Installing: /usr/local/share/OpenCV/lbpcascades/lbpcascade_profileface.xml
+-- Installing: /usr/local/bin/opencv_traincascade
+-- Set runtime path of "/usr/local/bin/opencv_traincascade" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/bin/opencv_createsamples
+-- Set runtime path of "/usr/local/bin/opencv_createsamples" to "/usr/local/lib:/usr/local/cuda/lib64"
+-- Installing: /usr/local/bin/opencv_annotation
+-- Set runtime path of "/usr/local/bin/opencv_annotation" to "/usr/local/lib:/usr/local/cuda/lib64"
+
