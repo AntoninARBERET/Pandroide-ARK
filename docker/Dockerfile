@@ -1,3 +1,7 @@
+#To build image from this file, use the following command from the directory of the file
+#docker build -t ark:env Dockerfile
+
+
 #IMPORTANT : Once the image is built, run it with the following command (you need nvidia docker 2) to give it acces to your GPU
 #sudo docker run -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all --rm image:version
 
@@ -72,26 +76,18 @@ RUN sudo apt install --assume-yes libvorbis-dev\
 	libxvidcore-dev\
 	v4l-utils
 
-WORKDIR ~/code/opencv-3.1.0/build
+WORKDIR ../build
 
-RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D WITH_CUBLAS=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" ../opencv \
-	make -j $(($(nproc) + 1)) \
-	sudo make install
+RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D WITH_CUBLAS=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" ../opencv
+
+RUN make -j $(($(nproc) + 1))
+RUN sudo make install
 
 #ARK
 
-WORKDIR ~/code/ARK
+WORKDIR ../../ARK
 RUN git clone https://github.com/DiODeProject/KilobotArena.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
 WORKDIR KilobotArena
 RUN qmake
 #RUN make
-
-
-
-
-
-ENV DISPLAY=:0
-ENV QT_X11_NO_MITSHM=1
-ENV QT_X11_NO_MITSHM=1
-
