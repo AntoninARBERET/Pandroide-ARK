@@ -90,4 +90,9 @@ RUN git clone https://github.com/DiODeProject/KilobotArena.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
 WORKDIR KilobotArena
 RUN qmake
+<<<<<<< HEAD
 #RUN make
+=======
+#RUN make
+
+>>>>>>> 1e2082c425bc493b62aef703d320810728de376b
