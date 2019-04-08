@@ -19,56 +19,103 @@
 
 \begin{titlepage}
 	\centering
-	\includegraphics[width=0.45\textwidth]{Images/SU.png}\par\vspace{1cm}
+	\includegraphics[width=0.45\textwidth]{images/SU.png}\par\vspace{1cm}
 	{\scshape\LARGE Sorbonne Université Sciences \par}
 	\vspace{1cm}
-	{\scshape\Large **CODE UE**\par}
+	{\scshape\Large PANDROIDE\par}
 	\vspace{1.5cm}
-	{\huge\bfseries **Titre**\par}
+	{\huge\bfseries Mise en place place d'un système de tracking visuel et réalité augmentée pour robotique en essaim\par}
 	\vspace{2cm}
 	{\Large\itshape Antonin ARBERET 3407709\par}
-	{\Large\itshape **Binome**\par}
+	{\Large\itshape Jonathan MORENO \par}
 	\vfill
 	Encadré par\par
-	**ENCADRANT** \textsc{}
+	Nicolas BREDECHE \textsc{}
 
 	\vfill
 
 % Bottom of the page
-	{\large \itshape **Date(mois)**\par}
+	{\large \itshape Mars 2019\par}
 \end{titlepage}
 
 \tableofcontents
 \renewcommand{\contentsname}
 
-\chapter{**Chapitre**}
-**Corps.**
+\chapter{Introduction}
 
-\section{*Section**}
 
-$\alpha dans equation$
+La robotique en essaim est un champs très actif de la recherche en robotique. Elle permet de modéliser et étudier les comportements collectifs de nombreux individus ayant à effectuer une tâche commune. L'objectif de ce projet et de mettre en place et d'étendre pour l'Institut des Systèmes Intelligents et de la Robotique (ISIR) de Sorbonne Université le logiciel Augmented Reality for Kilobots (ARK)\cite{ark} développé par l'Université de Sheffield pour augmenter les possibilités d'expériences réalisables avec l'essaim de robot du laboratoire.
 
-\subsection{**Sous section**}
+\chapter{Contexte du projet}
 
-Compiler : latex, bibtex, latex.
-Article à citer \cite{Source_article} 
-Misc à citer \cite{Source_misc}
+\section{Kilobots}
 
+Les kilobots \cite{kilobot} sont des robots conçus pour la robotique en essaim. La principale contrainte dans l'étude des essaims de robots est le coûts unitaire du robot, limitant fatalement la taille de l'essaim en fonction du budget. C'est dans l'optique de pallier à ce problème que les kilobots ont été conçus. \\
+Les kilobots sont aussi simples que possible : ils n'embarquent que les fonctionnalités élémentaires nécessaires aux fonctionnement d'un essaim de robots : le déplacement et la communication entre robots.\\
+ Grâce aux tiges métalliques faisant office de pattes et aux deux moteurs vibreurs qui, lorsqu'ils sont en fonctionnement, appliquent une force tangente aux disque formant la base du kilobot, ils ont la capacité de pivoter et de se déplacer en ligne  droite sur une surface plane et lisse. \\
+Leurs communication sont assurées par un émetteur-récepteur infrarouge situé sous le robot, qui doit donc évoluer sur un surface réfléchissante pour communiquer avec les autres. Les communications ne sont possibles qu'avec les proches voisins (environ 10 cm maximum). Ce capteur permet aussi de recevoir des messages d'un émetteur central, nommé Overhead Controller (OHC),  situé au dessus de leur environnement, c'est par celui-ci que l'utilisateur programme les robots. \\
+Nous nommerons ''arène'' cette environnement spécifique nécessaire à l'utilisation des kilobots.\\
+Grâce à leur simplicité les robots ne coûtent que 14\$ par unité, ce qui permet aux laboratoires de recherche d'acquérir des essaim de centaines, voir milliers de kilobots.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5]{images/Kilobots.png}
+\end{center}
+\caption{Un Kilobot - k-team.com}
+\label{Kilobot}
+\end{figure}
+
+\section{ARK}
+
+ARK est un outil pour l'utilisation des kilobots qui permet d'étendre les possibilités d'expérience sur les robots par l'usage de la réalité augmentée.\\
+
+\subsection{Fonctionnement}
+
+ARK est basé sur un système de caméra placé au dessus de l'arène, permettant de détécter chaque kilobots puis de suivre leurs déplacements tout au long d'une expérience. Pour cela ARK utilise la bibliothèque de traitement d'images en temps réel d'Intel OpenCV\cite{OpenCV}, adapté pour être supportée par la bibliothèque d'accélération de calculer par GPU de Nvidia CUDA\cite{CUDA}. Ainsi ARK est capable d'analyser en temps réel la position de chaque kilobot dans l'arène pour des essaims pouvant comporter des centaines de robots. \\
+De plus, ARK peut communiquer avec un ou tous les kilobots via l'OHC en temps réel, ce qui lui permet de limiter les actions de ces derniers.
+
+\subsection{Applications}
+
+Avec ces fonctionnalités, ARK peut donc simuler des éléments sur l'arène en réalité augmenté, simplement en limitant les actions des kilobots lorsqu'ils arrivent dans la zone de l'éléments : ils peuvent être contraint de se diriger ver une zone d'intérêt, empêcher d'entrer dans un obstacle ou acquérir une informations lorsqu'ils se trouvent dans une zone particulière.\\
+ARK permet aussi de faciliter le mouvement des robots relativement les uns aux autres. Le système de communication des kilobots ne leur permet pas de connaître la position de leur voisin mais uniquement la distance jusqu'à eux. ARK a cette information et peut superviser le mouvement d'un robot par rapport à un autre.
+
+\section{Etat initial}
+Au début du projet, l'ISIR venait de faire l'acquisition d'une arène pour les kilobots avec l'armature pour le système de caméra adapté à la mise en place d'ARK, les caméras et un essaim d'une centaine de kilobots étaient déjà disponible. En revanche aucune des machines utilisables n'était en mesure de faire tourner ARK qui par son utilisation de CUDA est partièrement gourmand en GPU.
+
+
+\chapter{Objectifs}
+
+\section{Mise en place d'ARK}
+
+Notre premier objectif est de mettre en place ARK à l'ISIR, d'un point de vue logiciel et matériel. Pour cela il nous faut reproduire l'environnement dans lequel ARK fonctionne virtuellement à l'aide de Docker, aussi bien pour des question de robustesse au changement de matériel que pour des questions techniques, les versions des bibliothèques utilisées par ARK imposent certaines contraintes, sur la version d'Ubuntu par exemple. \\
+D'un point de vue matériel, après avoir fait un diagnostic des machines disponibles  à l'ISIR, il a été décidé d'en commander une nouvelle capable de répondre aux exigences de puissances d'ARK. Il nous faut aussi décider des positions des nouvelles caméras et de l'OHC puis effectuer les réglages adéquat sur l'arène tout en gardant à l'esprit la possibilité qu'un projecteur soit installé au dessus de l'arène par la suite, et donc dégager la zone centrale.
+
+\section{Modification d'ARK}
+
+La seconde partie du projet consistera à modifier le code source d'ARK pour rendre modifiable le nombre de caméras nécessaires et pour détecter des éléments autres que les kilobots.\\
+Actuellement le nombre de caméra est de quatre, pensé initialement pour une arène de 2 m x 2 m et ARK n'a pas été programmé dans l'optique que ce nombre pourrait évoluer. L'arène de l'ISIR ne mesurant 152 cm x 72 cm que , le nombre de caméras peut être probablement réduit à deux voir une seule. Nous devrons donc reprendre le code source d'ARK et du script de calibration des caméras pour pouvoir modifier le nombre de caméras.\\ 
+De plus l'ISIR utilise des blocs fonctionnels, qui sont des éléments positionnables n'importe ou dans l'arène permettant de simuler un obstacle grâce à des émissions infrarouges. Nous devrons ajouter à ARK la détection des ces blocs pour les prendre en compte dans l'environnement en réalité augmentée.
+
+
+\section{Ajout des descripteurs de comportements collectifs}
+
+Une autre partie du projet consiste à implémenter des descripteurs de comportement collectifs. Ces descripteurs ont pour but de quantifier certaines caractéristiques du comportement de l'essaim dans son ensemble et d'en faire un retour visuel à l'utilisateur.
+On peut imaginer beaucoup de descripteurs différents, parmis eux on peut citer :\\
 \begin{itemize}
 
-\item **Element liste
+\item La carte de chaleur : une carte de l'arène dont chaque point se voit attribuer une temperature représentant la présence moyenne de robots sur le point au cours de l'experience. Cela permet de voir dans quelles zone géographique les robots passent le plus.
+
+\item L'alignement : Chaque robots se déplaçant dans une direction, l'alignement est une variable représentant la cohérence de déplacement de l'essaim. Elle varie de 0 lorsque tout les robots se déplacent dans des directions dont la somme des vecteurs est le vecteur nul à 1 lorsqu'ils se déplacent tous exactement dans la même direction. On peut le voir comme la norme du vecteur de vitesse moyenne de l'essaim.  Graphiquement il serait intéressant de représenter toute les vecteurs vitesses des kilobots coloré différemment selon leur orientation.
 
 \end{itemize}
 
 
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics{Images/SU.png} 
-\end{center}
-\caption{**Caption - Source**}
-\label{**label**}
-\end{figure}
+
+\section{Curvature}
+
+
+
 
 
 \bibliography{biblio}{}
