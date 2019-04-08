@@ -87,11 +87,3 @@ WORKDIR KilobotArena
 RUN qmake
 #RUN make
 
-
-
-
-
-ENV DISPLAY=:0
-ENV QT_X11_NO_MITSHM=1
-ENV QT_X11_NO_MITSHM=1
-
