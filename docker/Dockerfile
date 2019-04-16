@@ -2,8 +2,11 @@
 #docker build -t ark:env Dockerfile
 
 
-#IMPORTANT : Once the image is built, run it with the following command (you need nvidia docker 2) to give it acces to your GPU
+#IMPORTANT : Once the image is built, run it with the following command (you need nvidia docker 2) to give it acces to your GPU, the next one add acces to the display too
 #sudo docker run -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all --rm image:version
+
+#sudo docker run -it --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix image:version
+
 
 #Start from a docker nvidia image of ubuntu 16.04 including cuda 8.0
 FROM nvidia/cuda:8.0-devel
@@ -18,6 +21,8 @@ RUN apt-get update && apt-get install -y \
 	sudo \
 	software-properties-common \
 	qtcreator
+
+
 
 #OpenCV 3 for cuda 8 (from here : https://gist.github.com/filitchp/5645d5eebfefe374218fa2cbf89189aa)
 
@@ -90,9 +95,18 @@ RUN git clone https://github.com/DiODeProject/KilobotArena.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
 WORKDIR KilobotArena
 RUN qmake
-<<<<<<< HEAD
-#RUN make
-=======
+
 #RUN make
 
->>>>>>> 1e2082c425bc493b62aef703d320810728de376b
+# Allow acces to graphical interface, replace 1000 with your user / group id
+RUN export uid=1002 gid=1002 && \
+    mkdir -p /home/developer && \
+    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+    echo "developer:x:${uid}:" >> /etc/group && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
+    chmod 0440 /etc/sudoers.d/developer && \
+    chown ${uid}:${gid} -R /home/developer
+
+USER developer
+ENV HOME /home/developer
+
