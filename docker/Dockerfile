@@ -22,7 +22,17 @@ RUN apt-get update && apt-get install -y \
 	software-properties-common \
 	qtcreator
 
+# Allow acces to graphical interface, replace 1000 with your user / group id
+RUN export uid=1002 gid=1002 && \
+    mkdir -p /home/developer && \
+    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+    echo "developer:x:${uid}:" >> /etc/group && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
+    chmod 0440 /etc/sudoers.d/developer && \
+    chown ${uid}:${gid} -R /home/developer
 
+USER developer
+ENV HOME /home/developer
 
 #OpenCV 3 for cuda 8 (from here : https://gist.github.com/filitchp/5645d5eebfefe374218fa2cbf89189aa)
 
@@ -91,22 +101,10 @@ RUN sudo make install
 #ARK
 
 WORKDIR ../../ARK
-RUN git clone https://github.com/DiODeProject/KilobotArena.git && echo "Cloned"
+RUN git clone https://github.com/nekonaute/KilobotArena-Paris.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
 WORKDIR KilobotArena
 RUN qmake
 
 #RUN make
-
-# Allow acces to graphical interface, replace 1000 with your user / group id
-RUN export uid=1002 gid=1002 && \
-    mkdir -p /home/developer && \
-    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
-    echo "developer:x:${uid}:" >> /etc/group && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
-    chmod 0440 /etc/sudoers.d/developer && \
-    chown ${uid}:${gid} -R /home/developer
-
-USER developer
-ENV HOME /home/developer
 
