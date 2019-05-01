@@ -1,33 +1,94 @@
 #To build image from this file, use the following command from the directory of the file
-#docker build -t ark:env Dockerfile
+#docker build -t ark .
 
 
 #IMPORTANT : Once the image is built, run it with the following command (you need nvidia docker 2) to give it acces to your GPU, the next one add acces to the display too
-#sudo docker run -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all --rm image:version
 
-#sudo docker run -it --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix image:version
+#docker run -ti --rm \    
+#       --runtime=nvidia\
+#       -e NVIDIA_VISIBLE_DEVICES=all\
+#       -e DISPLAY=$DISPLAY \
+#       -v /tmp/.X11-unix:/tmp/.X11-unix \
+#       image:vesion
 
 
-#Start from a docker nvidia image of ubuntu 16.04 including cuda 8.0
+
+
+#FROM ubuntu:14.04
 FROM nvidia/cuda:8.0-devel
 
-#Basics installations
+#Installations
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y firefox \
     build-essential \
     git \
     vim \
     wget \
-	sudo \
-	software-properties-common \
-	qtcreator
-
-
-
-#OpenCV 3 for cuda 8 (from here : https://gist.github.com/filitchp/5645d5eebfefe374218fa2cbf89189aa)
+    sudo \
+    software-properties-common \
+    qtcreator
 
 RUN apt-get install -y cmake cmake-qt-gui 
 
+RUN sudo apt install --assume-yes build-essential\
+     cmake\
+     git\
+     pkg-config\
+     unzip\
+     ffmpeg\
+     qtbase5-dev\
+     python-dev\
+     python3-dev\
+     python-numpy\
+     python3-numpy
+
+
+RUN sudo apt install --assume-yes libhdf5-dev 
+
+RUN sudo apt install --assume-yes libgtk-3-dev\
+    libdc1394-22\
+    libdc1394-22-dev\
+    libjpeg-dev\
+    libpng12-dev\
+    libtiff5-dev\
+    libjasper-dev 
+
+RUN sudo apt install --assume-yes libavcodec-dev\
+    libavformat-dev\
+    libswscale-dev\
+    libxine2-dev\
+    libgstreamer0.10-dev\
+    libgstreamer-plugins-base0.10-dev 
+
+RUN sudo apt install --assume-yes libv4l-dev\
+    libtbb-dev\
+    libfaac-dev\
+    libmp3lame-dev\
+    libopencore-amrnb-dev\
+    libopencore-amrwb-dev\
+    libtheora-dev 
+
+RUN sudo apt install --assume-yes libvorbis-dev\
+    libxvidcore-dev\
+    v4l-utils 
+
+RUN sudo apt install --assume-yes libvorbis-dev\
+    libxvidcore-dev\
+    v4l-utils
+
+#Permissions d'affichage
+
+# Replace 1000 with your user / group id
+RUN export uid=1000 gid=1000 && \
+    mkdir -p /home/developer && \
+    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+    echo "developer:x:${uid}:" >> /etc/group && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
+    chmod 0440 /etc/sudoers.d/developer && \
+    chown ${uid}:${gid} -R /home/developer
+
+
+#OpenCV
 WORKDIR ~/code/opencv-3.1.0
 
 RUN git clone https://github.com/daveselinger/opencv.git && echo "Cloned"
@@ -35,51 +96,6 @@ RUN git clone https://github.com/daveselinger/opencv.git && echo "Cloned"
 WORKDIR opencv
 
 RUN git checkout 3.1.0-with-cuda8
-
-RUN sudo apt install --assume-yes build-essential\
-	 cmake\
-	 git\
-	 pkg-config\
-	 unzip\
-	 ffmpeg\
-	 qtbase5-dev\
-	 python-dev\
-	 python3-dev\
-	 python-numpy\
-	 python3-numpy
-
-RUN sudo apt install --assume-yes libhdf5-dev 
-
-RUN sudo apt install --assume-yes libgtk-3-dev\
-	libdc1394-22\
-	libdc1394-22-dev\
-	libjpeg-dev\
-	libpng12-dev\
-	libtiff5-dev\
-	libjasper-dev 
-
-RUN sudo apt install --assume-yes libavcodec-dev\
-	libavformat-dev\
-	libswscale-dev\
-	libxine2-dev\
-	libgstreamer0.10-dev\
-	libgstreamer-plugins-base0.10-dev 
-
-RUN sudo apt install --assume-yes libv4l-dev\
-	libtbb-dev\
-	libfaac-dev\
-	libmp3lame-dev\
-	libopencore-amrnb-dev\
-	libopencore-amrwb-dev\
-	libtheora-dev 
-
-RUN sudo apt install --assume-yes libvorbis-dev\
-	libxvidcore-dev\
-	v4l-utils 
-
-RUN sudo apt install --assume-yes libvorbis-dev\
-	libxvidcore-dev\
-	v4l-utils
 
 WORKDIR ../build
 
@@ -93,21 +109,15 @@ RUN sudo make install
 WORKDIR ../../ARK
 RUN git clone https://github.com/nekonaute/KilobotArena-Paris.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
-WORKDIR KilobotArena
-RUN qmake
+WORKDIR KilobotArena-Paris
 
+#Ark est deja build dans le repo
+#RUN sudo qmake
 #RUN make
 
-
-# Allow acces to graphical interface, replace 1000 with your user / group id
-RUN export uid=1002 gid=1002 && \
-    mkdir -p /home/developer && \
-    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
-    echo "developer:x:${uid}:" >> /etc/group && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
-    chmod 0440 /etc/sudoers.d/developer && \
-    chown ${uid}:${gid} -R /home/developer
 
 USER developer
 ENV HOME /home/developer
 
+
+#pour tester l'affichage /usr/bin/firefox
