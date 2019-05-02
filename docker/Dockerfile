@@ -8,6 +8,7 @@
 #       --runtime=nvidia\
 #       -e NVIDIA_VISIBLE_DEVICES=all\
 #       -e DISPLAY=$DISPLAY \
+#		--device=/dev/video0
 #       -v /tmp/.X11-unix:/tmp/.X11-unix \
 #       image:vesion
 
@@ -26,7 +27,9 @@ RUN apt-get update && apt-get install -y firefox \
     wget \
     sudo \
     software-properties-common \
+	usbutils \
     qtcreator
+
 
 RUN apt-get install -y cmake cmake-qt-gui 
 
@@ -79,7 +82,7 @@ RUN sudo apt install --assume-yes libvorbis-dev\
 #Permissions d'affichage
 
 # Replace 1000 with your user / group id
-RUN export uid=1000 gid=1000 && \
+RUN export uid=1002 gid=1002 && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:${uid}:" >> /etc/group && \
@@ -114,6 +117,12 @@ WORKDIR KilobotArena-Paris
 #Ark est deja build dans le repo
 #RUN sudo qmake
 #RUN make
+
+#Calibration
+
+WORKDIR ..
+RUN git clone https://github.com/DiODeProject/KilobotArenaCalibration.git && echo "Cloned"
+
 
 
 USER developer
