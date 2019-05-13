@@ -1,0 +1,81 @@
+\documentclass{report}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
+\usepackage{blindtext}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{float}
+\frenchbsetup{StandardLists=true}
+
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.45\textwidth]{Images/SU.png}\par\vspace{1cm}
+	{\scshape\LARGE Sorbonne Université Sciences \par}
+	\vspace{1cm}
+	{\scshape\Large PANDROIDE\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Mise en place d'un système de tracking visuel et réalité augmentée pour robotique en essaim\par}
+	\vspace{2cm}
+	{\Large\itshape Antonin ARBERET 3407709\par}
+	{\Large\itshape Jonathan MORENO 3530148\par}
+	\vfill
+	Encadré par\par
+	Nicolas BREDECHE \textsc{}
+
+	\vfill
+
+% Bottom of the page
+	{\large \itshape Mai 2019\par}
+\end{titlepage}
+
+\tableofcontents
+\renewcommand{\contentsname}
+
+\chapter{**Chapitre**}
+**Corps.**
+
+\section{*Section**}
+
+$\alpha dans equation$
+
+\subsection{**Sous section**}
+
+Compiler : latex, bibtex, latex.
+Article à citer \cite{Source_article} 
+Misc à citer \cite{Source_misc}
+
+\begin{itemize}
+
+\item **Element liste
+
+\end{itemize}
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics{Images/SU.png} 
+\end{center}
+\caption{**Caption - Source**}
+\label{**label**}
+\end{figure}
+
+
+\bibliography{biblio}{}
+\bibliographystyle{plain}
+
+
+
+
+\end{document}
+

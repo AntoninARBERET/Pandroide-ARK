@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{OpenCV}
+{Intel}.
+\newblock {OpenCV : Open Source Computer Vision Library}.
+\newblock \url{https://opencv.org/}.
+\newblock En ligne; consulte le 24 Mars 2019.
+
+\bibitem{CUDA}
+{Nvidia}.
+\newblock {CUDA : Compute Unified Device Architecture}.
+\newblock \url{https://www.nvidia.fr/object/cuda-parallel-computing-fr.html}.
+\newblock En ligne; consulte le 24 Mars 2019.
+
+\bibitem{ark}
+A.~Reina, A.~J. Cope, E.~Nikolaidis, J.~A.~R. Marshall, and C.~Sabo.
+\newblock {ARK}: {Augmented} {Reality} for {Kilobots}.
+\newblock {\em IEEE Robotics and Automation Letters}, 2(3):1755--1761, July
+  2017.
+
+\bibitem{kilobot}
+M.~Rubenstein, C.~Ahler, and R.~Nagpal.
+\newblock Kilobot: {A} low cost scalable robot system for collective behaviors.
+\newblock In {\em 2012 {IEEE} {International} {Conference} on {Robotics} and
+  {Automation}}, pages 3293--3298, May 2012.
+
+\end{thebibliography}
