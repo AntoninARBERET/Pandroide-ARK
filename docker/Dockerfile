@@ -29,6 +29,10 @@
 #FROM ubuntu:14.04
 FROM nvidia/cuda:8.0-devel
 
+#Parameters : group and user id for display permission, default val = 1000
+ARG user_id=1000
+ARG group_id=1000
+
 #Installations
 
 RUN apt-get update && apt-get install -y firefox \
@@ -93,7 +97,7 @@ RUN sudo apt install --assume-yes libvorbis-dev\
 #Permissions d'affichage
 
 # Replace 1000 with your user / group id
-RUN export uid=1000 gid=1000 && \
+RUN export uid=$user_id gid=$group_id && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:${uid}:" >> /etc/group && \
@@ -107,7 +111,7 @@ WORKDIR /home/developer/code/opencv-3.1.0
 
 RUN git clone https://github.com/daveselinger/opencv.git && echo "Cloned"
 
-#Contrib
+#Contrib, placer dans un repo git ?
 RUN wget https://github.com/opencv/opencv_contrib/archive/3.1.0.tar.gz && echo "Downloaded"
 
 RUN tar -xvzf 3.1.0.tar.gz && echo "unziped"
