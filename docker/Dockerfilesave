@@ -18,6 +18,9 @@
 #one line : 
 #docker run -ti --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY --device=/dev/video0:/dev/video0 --device=/dev/video1:/dev/video1 --device=/dev/video2:/dev/video2 --device=/dev/video3:/dev/video3 -v /tmp/.X11-unix:/tmp/.X11-unix ark
 
+#one line no cameras
+#docker run -ti --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY  -v /tmp/.X11-unix:/tmp/.X11-unix ark
+
 #old : --device=/dev/video0
 
 
@@ -25,6 +28,10 @@
 
 #FROM ubuntu:14.04
 FROM nvidia/cuda:8.0-devel
+
+#Parameters : group and user id for display permission, default val = 1000
+ARG user_id=1000
+ARG group_id=1000
 
 #Installations
 
@@ -90,7 +97,7 @@ RUN sudo apt install --assume-yes libvorbis-dev\
 #Permissions d'affichage
 
 # Replace 1000 with your user / group id
-RUN export uid=1002 gid=1002 && \
+RUN export uid=$user_id gid=$group_id && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:${uid}:" >> /etc/group && \
@@ -100,9 +107,14 @@ RUN export uid=1002 gid=1002 && \
 
 
 #OpenCV
-WORKDIR ~/code/opencv-3.1.0
+WORKDIR /home/developer/code/opencv-3.1.0
 
 RUN git clone https://github.com/daveselinger/opencv.git && echo "Cloned"
+
+#Contrib, placer dans un repo git ?
+RUN wget https://github.com/opencv/opencv_contrib/archive/3.1.0.tar.gz && echo "Downloaded"
+
+RUN tar -xvzf 3.1.0.tar.gz && echo "unziped"
 
 WORKDIR opencv
 
@@ -110,7 +122,7 @@ RUN git checkout 3.1.0-with-cuda8
 
 WORKDIR ../build
 
-RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D WITH_CUBLAS=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" ../opencv
+RUN cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.1.0/modules/ -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_CUDA=ON -D WITH_CUBLAS=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_PERF_TESTS=OFF -D BUILD_TESTS=OFF -DCUDA_NVCC_FLAGS="-D_FORCE_INLINES" ../opencv
 
 RUN make -j $(($(nproc) + 1))
 RUN sudo make install

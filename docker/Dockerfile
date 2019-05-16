@@ -33,6 +33,10 @@ FROM nvidia/cuda:8.0-devel
 ARG user_id=1000
 ARG group_id=1000
 
+
+
+
+
 #Installations
 
 RUN apt-get update && apt-get install -y firefox \
@@ -144,10 +148,10 @@ WORKDIR ..
 RUN git clone https://github.com/AntoninARBERET/KilobotArenaCalibration-Paris.git && echo "Cloned"
 
 
-
 USER developer
 ENV HOME /home/developer
 
+RUN sudo chown -R developer /home/developer
 
 #Acces au 4 camera
 RUN sudo usermod -a -G video developer
