@@ -1,0 +1,73 @@
+\begin{thebibliography}{10}
+
+\bibitem{swarmrobotics}
+Manuele Brambilla, Eliseo Ferrante, Mauro Birattari, and Marco Dorigo.
+\newblock Swarm robotics: a review from the swarm engineering perspective.
+\newblock {\em Swarm Intelligence}, 7(1):1--41, March 2013.
+
+\bibitem{docker}
+{Docker}.
+\newblock {Docker}.
+\newblock \url{https://www.docker.com/}.
+\newblock En ligne; consulte le 19 Mai 2019.
+
+\bibitem{opencv}
+{Intel}.
+\newblock {OpenCV : Open Source Computer Vision Library}.
+\newblock \url{https://opencv.org/}.
+\newblock En ligne; consulte le 19 Mai 2019.
+
+\bibitem{c920}
+{Logitech}.
+\newblock {c920 specifications}.
+\newblock
+  \url{https://support.logitech.com/en_us/product/hd-pro-webcam-c920/specs}.
+\newblock En ligne; consulte le 19 Mai 2019.
+
+\bibitem{epuck}
+Francesco Mondada, Michael Bonani, Xavier Raemy, James Pugh, Christopher
+  Cianci, Adam Klaptocz, Stephane Magnenat, Jean-Christophe Zufferey, Dario
+  Floreano, and Alcherio Martinoli.
+\newblock The e-puck, a {Robot} {Designed} for {Education} in {Engineering}.
+\newblock {\em Proceedings of the 9th Conference on Autonomous Robot Systems
+  and Competitions}, 1(1):59--65, 2009.
+
+\bibitem{CUDA}
+{Nvidia}.
+\newblock {CUDA : Compute Unified Device Architecture}.
+\newblock \url{https://www.nvidia.fr/object/cuda-parallel-computing-fr.html}.
+\newblock En ligne; consulte le 19 Mai 2019.
+
+\bibitem{nvidiadocker}
+{Nvidia}.
+\newblock {Nvidia Docker : Build and run Docker containers leveraging NVIDIA
+  GPUs}.
+\newblock \url{https://github.com/NVIDIA/nvidia-docker}.
+\newblock En ligne; consulte le 19 Mai 2019.
+
+\bibitem{ARK}
+A.~Reina, A.~J. Cope, E.~Nikolaidis, J.~A.~R. Marshall, and C.~Sabo.
+\newblock {ARK}: {Augmented} {Reality} for {Kilobots}.
+\newblock {\em IEEE Robotics and Automation Letters}, 2(3):1755--1761, July
+  2017.
+
+\bibitem{kilobots}
+M.~Rubenstein, C.~Ahler, and R.~Nagpal.
+\newblock Kilobot: {A} low cost scalable robot system for collective behaviors.
+\newblock In {\em 2012 {IEEE} {International} {Conference} on {Robotics} and
+  {Automation}}, pages 3293--3298, May 2012.
+
+\bibitem{swistrack}
+Lochmatter Thomas, Roduit Pierre, Cianci Chris, Correll Nikolaus, Jacot
+  Jacques, and Martinoli Alcherio.
+\newblock {SwisTrack} - {A} {Flexible} {Open} {Source} {Tracking} {Software}
+  for {Multi}-{Agent} {Systems} - {IEEE} {Conference} {Publication}.
+
+\bibitem{MARGO}
+Werkhoven Zach, Rohrsen Christian, Qin Chuan, Brembs Bjorn, and de~Bivort
+  Benjamin.
+\newblock {MARGO} ({Massively} {Automated} {Real}-time {GUI} for
+  {Object}-tracking), a platform for high-throughput ethology {\textbar}
+  {bioRxiv}.
+
+\end{thebibliography}
