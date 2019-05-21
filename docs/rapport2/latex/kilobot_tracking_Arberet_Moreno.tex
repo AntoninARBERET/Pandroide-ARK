@@ -147,10 +147,18 @@ L'essaim qui évolue sur cette arène est composé d'une centaine de kilobots.
 \label{L'arène de l'ISIR}
 \end{figure}
 
+\newpage
+
 \section{Diagnostic et configuration de la machine}
 
 En premier lieu, à notre arrivée à l'ISIR, nous avons eu à faire l'état des lieux des machines disponibles pour en dégager une capable de faire tourner ARK. Plusieurs contraintes matérielles sont liées à ARK, en particulier la carte graphique qui doit être une Nvidia suffisamment performante pour permettre à CUDA d'accélérer OpenCV en temps réel pendant l'expérience, beaucoup de mémoire vive doit ainsi être disponible. \\
-Malheureusement aucune des machines présentes à ce moment-là ne satisfaisait ces contraintes, il a donc été décidé d'en commander une nouvelle.\\
+Malheureusement aucune des machines présentes à ce moment-là ne satisfaisait ces contraintes, il a donc été décidé d'en commander une nouvelle. La configuration de cette machine est :\\
+\begin{itemize}
+\item CPU : Intel Xeon W-2155 @ 3.3GHz
+\item GPU : 1x Nvidia Quadro P400 (RAM : 2Go), 1x GeForce RTX 2080 Ti (RAM : 10Go)
+\item RAM : 32Go de RAM
+\item SSD : 250Go
+\end{itemize}
 Le premier mois du projet à donc été consacré à la documentation, l'étude du code et la découverte et la prise en main des kilobots en attendant d'avoir accès à un environnement adapté à l'installation de ARK. \\
 
 \section{Simulation de l'environnement}
