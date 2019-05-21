@@ -1,7 +1,7 @@
 \documentclass{report}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[british,UKenglish,USenglish,english,american]{babel}
+\usepackage[british,french]{babel}
 \usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
 \usepackage{blindtext}
 \usepackage{cite}
@@ -9,8 +9,18 @@
 \usepackage{url}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xparse}
 
 
+\usepackage{hyperref}
+
+\lstset{language=C,keywordstyle={\bfseries \color{black}}}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{black}{#1}}%
+}
 
 
 
@@ -23,7 +33,7 @@
 	\vspace{1cm}
 
 	\vspace{1.5cm}
-	{\huge\bfseries ARK Docker \\ User manual\par}
+	{\huge\bfseries ARK Docker \\ User's manual\par}
 	\vspace{2cm}
 	{\Large\itshape Antonin ARBERET\par}
 	{\Large\itshape Jonathan MORENO\par}
@@ -36,41 +46,25 @@
 	{\large \itshape May 2019\par}
 \end{titlepage}
 
-\tableofcontents
-\renewcommand{\contentsname}
+ARK Docker is a Docker image created at the ISIR, Sorbonne Université to provide an environment for ARK including all of the library it needs. It requires a Linux distribution to be used. It has been tested with Ubuntu 18.04.
 
-\chapter{**Chapitre**}
-**Corps.**
+\section*{Docker setup}
 
-\section{*Section**}
+\subsection*{Docker}
+To run the Docker image in a container, you need to install Docker first. Just follow the instructions of the official guide : \hyperref[docker]{https://docs.docker.com/install/linux/docker-ce/ubuntu/} .
 
-$\alpha dans equation$
+\subsection*{Nvidia Docker}
+You will need to give to your container acces on your GPU. We use Nvidia Docker, a software made to handle the connection between the Docker container and your GPU. This guide on the offical GitHub will do the work : \hyperref[nvidiadocker]{https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)} .
 
-\subsection{**Sous section**}
+\section*{Building and running the Docker image in a container}
+The Docker image is not available pre-built on Docker Hub because you need to build it on your own computer or it will not have the permission to use your display. \\
+Just download or clone this repository : \hyperref[arkrepo]{https://github.com/AntoninARBERET/Pandroide-ARK} . In the Docker directory you will find the Dockerfile, containing every instructions Docker needs to build the image. The two bash scripts with it just run the build and run command with the right parameters. \\
 
-Compiler : latex, bibtex, latex.
-Article à citer \cite{Source_article} 
-Misc à citer \cite{Source_misc}
+To build the image just execute \codeword{build_ark_image.sh}, it doesn't need any parameters but it will access your user id and group id. This step takes several minutes. When it's done, the \codeword{docker images} command should show a new Docker image tagged ark:latest.\\
 
-\begin{itemize}
-
-\item **Element liste
-
-\end{itemize}
+To run the image, execute \codeword{run_ark_image.sh nbcams} where you give nbcams as a parameter which is the number of cam you want to use in your Docker container. The container will be launched directly in the current terminal inside the directory containing ARK and ARK calibration.
 
 
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics{Images/SU.png} 
-\end{center}
-\caption{**Caption - Source**}
-\label{**label**}
-\end{figure}
-
-
-\bibliography{biblio}{}
-\bibliographystyle{plain}
 
 
 
