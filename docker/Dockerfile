@@ -1,41 +1,13 @@
-#To build image from this file, use the following command from the directory of the file
-#docker build -t ark .
+#The commands to build the image and run it in a container are available here : https://github.com/AntoninARBERET/Pandroide-ARK/tree/master/docker
 
+#Base image : Ubuntu 16.04 with CUDA 8
 
-#IMPORTANT : Once the image is built, run it with the following command (you need nvidia docker 2) to give it acces to your GPU, the next one add acces to the display too
-
-#docker run -ti --rm \    
-#       --runtime=nvidia\
-#       -e NVIDIA_VISIBLE_DEVICES=all\
-#       -e DISPLAY=$DISPLAY \
-#		--device=/dev/video0:/dev/video0 \
-#		--device=/dev/video1:/dev/video1 \
-#		--device=/dev/video2:/dev/video2 \
-#		--device=/dev/video3:/dev/video3 \
-#       -v /tmp/.X11-unix:/tmp/.X11-unix \
-#       image:vesion
-
-#one line : 
-#docker run -ti --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY --device=/dev/video0:/dev/video0 --device=/dev/video1:/dev/video1 --device=/dev/video2:/dev/video2 --device=/dev/video3:/dev/video3 -v /tmp/.X11-unix:/tmp/.X11-unix ark
-
-#one line no cameras
-#docker run -ti --rm --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=all -e DISPLAY=$DISPLAY  -v /tmp/.X11-unix:/tmp/.X11-unix ark
-
-#old : --device=/dev/video0
-
-
-
-
-#FROM ubuntu:14.04
 FROM nvidia/cuda:8.0-devel
 
 #Parameters : group and user id for display permission, default val = 1000
+
 ARG user_id=1000
 ARG group_id=1000
-
-
-
-
 
 #Installations
 
@@ -98,7 +70,7 @@ RUN sudo apt install --assume-yes libvorbis-dev\
     libxvidcore-dev\
     v4l-utils
 
-#Permissions d'affichage
+#Display permission
 
 # Replace 1000 with your user / group id
 RUN export uid=$user_id gid=$group_id && \
@@ -110,15 +82,12 @@ RUN export uid=$user_id gid=$group_id && \
     chown ${uid}:${gid} -R /home/developer
 
 
-#OpenCV
+#OpenCV and contrib
 WORKDIR /home/developer/code/opencv-3.1.0
 
 RUN git clone https://github.com/daveselinger/opencv.git && echo "Cloned"
 
-#Contrib, placer dans un repo git ?
-RUN wget https://github.com/opencv/opencv_contrib/archive/3.1.0.tar.gz && echo "Downloaded"
-
-RUN tar -xvzf 3.1.0.tar.gz && echo "unziped"
+RUN git clone https://github.com/AntoninARBERET/opencv_contrib-3.1.0.git && echo "Cloned"
 
 WORKDIR opencv
 
@@ -137,23 +106,26 @@ WORKDIR ../../ARK
 RUN git clone https://github.com/nekonaute/KilobotArena-Paris.git && echo "Cloned"
 RUN sudo apt-get install qt5-default
 WORKDIR KilobotArena-Paris
-
-#Ark est deja build dans le repo
-#RUN sudo qmake
-#RUN make
-
-#Calibration
-
+RUN sudo qmake
+RUN make
 WORKDIR ..
-RUN git clone https://github.com/AntoninARBERET/KilobotArenaCalibration-Paris.git && echo "Cloned"
 
+#ARK calibration
+
+
+RUN git clone https://github.com/AntoninARBERET/KilobotArenaCalibration-Paris.git && echo "Cloned"
+WORKDIR KilobotArenaCalibration-Paris
+RUN qmake
+RUN make
+WORKDIR ..
+
+#Switch to the user allowed to use the display
 
 USER developer
 ENV HOME /home/developer
-
 RUN sudo chown -R developer /home/developer
 
-#Acces au 4 camera
+#Cameras
 RUN sudo usermod -a -G video developer
 
 RUN sudo mknod /dev/video0 c 81 0
@@ -167,6 +139,3 @@ RUN sudo ln -s /dev/video2 /dev/video2
 
 RUN sudo mknod /dev/video3 c 81 3
 RUN sudo ln -s /dev/video3 /dev/video3
-
-
-#pour tester l'affichage /usr/bin/firefox
