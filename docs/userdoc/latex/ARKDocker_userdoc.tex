@@ -1,0 +1,79 @@
+\documentclass{report}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british,UKenglish,USenglish,english,american]{babel}
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
+\usepackage{blindtext}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{float}
+
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.45\textwidth]{Images/SU.png}\par\vspace{1cm}
+	{\scshape\LARGE Sorbonne Université Sciences \par}
+	\vspace{1cm}
+
+	\vspace{1.5cm}
+	{\huge\bfseries ARK Docker \\ User manual\par}
+	\vspace{2cm}
+	{\Large\itshape Antonin ARBERET\par}
+	{\Large\itshape Jonathan MORENO\par}
+	\vfill
+	 \textsc{}
+
+	\vfill
+
+% Bottom of the page
+	{\large \itshape May 2019\par}
+\end{titlepage}
+
+\tableofcontents
+\renewcommand{\contentsname}
+
+\chapter{**Chapitre**}
+**Corps.**
+
+\section{*Section**}
+
+$\alpha dans equation$
+
+\subsection{**Sous section**}
+
+Compiler : latex, bibtex, latex.
+Article à citer \cite{Source_article} 
+Misc à citer \cite{Source_misc}
+
+\begin{itemize}
+
+\item **Element liste
+
+\end{itemize}
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics{Images/SU.png} 
+\end{center}
+\caption{**Caption - Source**}
+\label{**label**}
+\end{figure}
+
+
+\bibliography{biblio}{}
+\bibliographystyle{plain}
+
+
+
+
+\end{document}
+

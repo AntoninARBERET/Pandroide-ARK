@@ -1,0 +1,27 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Introduction et contexte}{2}
+\contentsline {section}{\numberline {1.1}Robotique en essaim, kilobots}{2}
+\contentsline {section}{\numberline {1.2}Objectifs du projet}{3}
+\contentsline {chapter}{\numberline {2}Pr\'esentation et comparaison des m\'ethodes de tracking existante}{4}
+\contentsline {section}{\numberline {2.1}MARGO : Massively Automated Real-time GUI for Object-tracking}{4}
+\contentsline {section}{\numberline {2.2}SwisTrack}{5}
+\contentsline {section}{\numberline {2.3}ARK : Augmented Reality for Kilobots}{5}
+\contentsline {chapter}{\numberline {3}Mise en place d'ARK et de son environnement}{7}
+\contentsline {section}{\numberline {3.1}Ar\`ene et mat\'eriel}{7}
+\contentsline {section}{\numberline {3.2}Diagnostic et configuration de la machine}{7}
+\contentsline {section}{\numberline {3.3}Simulation de l'environnement}{8}
+\contentsline {subsection}{\numberline {3.3.1}Structure, d\'ependances et incompatibilit\'es}{8}
+\contentsline {subsection}{\numberline {3.3.2}Docker}{8}
+\contentsline {subsection}{\numberline {3.3.3}Corrections des imports}{9}
+\contentsline {section}{\numberline {3.4}Ex\'ecution, analyse et remarques}{10}
+\contentsline {subsection}{\numberline {3.4.1}Nombre et type de cam\'eras, format de l'ar\`ene}{10}
+\contentsline {subsection}{\numberline {3.4.2}Calibration}{11}
+\contentsline {subsubsection}{Petit overlap}{11}
+\contentsline {subsubsection}{Grand overlap}{11}
+\contentsline {subsection}{\numberline {3.4.3}Analyse critique du logiciel et possibilit\'es d'am\'elioration}{12}
+\contentsline {chapter}{\numberline {4}Modifications du nombre de cam\'eras n\'ecessaires}{14}
+\contentsline {section}{\numberline {4.1}Couverture possible de l'ar\`ene avec une ou deux cam\'eras }{14}
+\contentsline {subsection}{\numberline {4.1.1}Deux cam\'eras}{14}
+\contentsline {subsection}{\numberline {4.1.2}Une cam\'era}{14}
+\contentsline {section}{\numberline {4.2}Modification du code}{15}
+\contentsline {chapter}{\numberline {5}Horizon du projet et conclusion}{16}

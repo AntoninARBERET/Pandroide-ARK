@@ -44,25 +44,25 @@
 
 \chapter{Introduction et contexte}
 
-La robotique en essaim est une branche de la robotique qui s'inspire des espèce animales vivant en collectivité capables d'accomplir collectivement des tâches complexes. Pour se faire elles adoptent généralement des comportement collectifs basés sur des interactions simples et locale alliant robustesse, flexibilité et scalabilité \cite{swarmrobotics}. Les chercheurs dans ce domaine modélisent, étudient et imaginent des comportements de ce genre à l'aide de grand groupe de robots qu'on appelle essaim. \\
-Du point de vue de l'observateur, l'étude de ces comportements collectifs peut se révéler laborieuse, et une solution pour la rendre plus efficace est de mettre en place un système permettant de suivre les robots dans leur évolution.\\
+La robotique en essaim est une branche de la robotique qui s'inspire des espèce animales vivant en collectivité capables d'accomplir collectivement des tâches complexes. Pour ce faire, elles adoptent généralement des comportements collectifs basés sur des interactions simples et locales alliant robustesse, flexibilité et scalabilité \cite{swarmrobotics}. Les chercheurs dans ce domaine modélisent, étudient et imaginent des comportements de ce genre à l'aide de grands groupes de robots qu'on appelle essaims. \\
+Du point de vue de l'observateur, l'étude de ces comportements collectifs peut se révéler laborieuse et une solution pour la rendre plus efficace est de mettre en place un système permettant de suivre les robots dans leur évolution.\\
 Dans le cadre de ce projet nous avons été accueillis par Nicolas Bredèche à l'Institut des Systèmes Intelligents et de la Robotique (ISIR) pour travailler sur un système de tracking vidéo en réalité augmentée destiné à être utilisé avec l'essaim de robots du laboratoire.\\
-Ce rapport et le code du Docker sont disponible sur le dépôt suivant :\\
+Ce rapport et le code du Docker sont disponibles sur le dépôt suivant :\\
 https://github.com/AntoninARBERET/Pandroide-ARK\\
-Les autres dépôts de code liées au projet y sont référencés également.\\
+Les autres dépôts de code liés au projet y sont référencés également.\\
 
 \section{Robotique en essaim, kilobots}
 
-L'ISIR possède un essaim de robots nommés kilobots \cite{kilobots} . La principale contrainte dans l'étude des essaims de robots est le coûts unitaire du robots, limitant fatalement la taille de l'essaim en fonction du budget. C'est dans l'optique de pallier à ce problème que les kilobots ont été conçus. \\
-Les kilobots sont aussi simple que possible : n'embarquent que les fonctionnalités élémentaires nécessaires aux fonctionnement d'un essaim de robots : le déplacement et la communication entre robots.\\
- Grâce aux tiges métalliques faisant office de pattes et aux deux moteurs vibreurs qui, lorsqu'ils sont en fonctionnement, appliquent une force tangente aux disque formant la base du kilobot, ils ont la capacité de pivoter et de se déplacer en ligne  droite sur une surface plane et lisse. \\
-Leurs communications sont assurées par un émetteur récepteur infrarouge situé sous le robots, qui doit donc évoluer sur un surface réfléchissante pour communiquer avec les autres. Les communications ne se font qu'avec les proches voisins (environ 10 cm maximum). Ce capteur permet aussi de recevoir des messages d'un émetteur central, nommé Overhead Controller (OHC),  situé au dessus de leur environnement, c'est par celui-ci que l'utilisateur programme les robots. \\
-Nous nommerons ?arène? cette environnement spécifique nécessaire à l'utilisation des kilobots.\\
-Grâce à leur simplicité les robots ne coûtent que 14\$ par unité, ce qui permet à des laboratoires de recherche d'accueillir des essaim de centaines, voir milliers de kilobots.\\
+L'ISIR possède un essaim de robots nommés kilobots \cite{kilobots} . La principale contrainte dans l'étude des essaims de robots est le coût unitaire du robot, limitant fatalement la taille de l'essaim en fonction du budget. C'est dans l'optique de pallier ce problème que les kilobots ont été conçus. \\
+Les kilobots sont aussi simples que possible, ils n'embarquent que les fonctionnalités élémentaires nécessaires aux fonctionnement d'un essaim de robots : le déplacement et la communication entre robots.\\
+ Grâce aux tiges métalliques faisant office de pattes et aux deux moteurs vibreurs qui, lorsqu'ils sont en fonctionnement, appliquent une force tangente aux disques formant la base du kilobot, ils ont la capacité de pivoter et de se déplacer en ligne  droite sur une surface plane et lisse. \\
+Leurs communications sont assurées par un émetteur récepteur infrarouge situé sous le robot, qui doit donc évoluer sur un surface réfléchissante pour communiquer avec les autres. Les communications ne se font qu'avec les proches voisins (environ 10 cm maximum). Ce capteur permet aussi de recevoir des messages d'un émetteur central, nommé Overhead Controller (OHC),  situé au-dessus de leur environnement, c'est par celui-ci que l'utilisateur programme les robots. \\
+Nous nommerons ?arène? cet environnement spécifique nécessaire à l'utilisation des kilobots.\\
+Grâce à leur simplicité les robots ne coûtent que 14\$ par unité, ce qui permet à des laboratoires de recherche d'accueillir des essaim de centaines, voir de milliers de kilobots.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.05]{Images/kilobot.jpg} 
+\includegraphics[scale=0.07]{Images/kilobot.jpg} 
 \end{center}
 \caption{Un kilobot}
 \label{Un kilobot}
@@ -76,57 +76,56 @@ Initialement, les objectifs du projet étaient de mettre en place le système de t
 \chapter{Présentation et comparaison des méthodes de tracking existante}
 
 Dans cette partie nous allons aborder la thématique du tracking visuel en évoquant notamment quelques logiciels et techniques déjà mis en place et fonctionnels. Mais avant cela il convient de donner une définition du sujet afin de cadrer la thématique. \\
-Le tracking visuel consiste en la capture et le suivi d'objets en mouvement en utilisant la plupart du temps une caméra. Cette capture permet l'extraction d'informations des objets suivis, l'une des information principale est leur déplacements, cette information nous intéressera particulièrement dans notre cas. Dans le but d'illustrer nos propos nous allons étudier quelques logiciels appliquant le tracking visuel. Nous commencerons par l'étude du Logiciel MARGO\\
+Le tracking visuel consiste en la capture et le suivi d'objets en mouvement en utilisant la plupart du temps une caméra. Cette capture permet l'extraction d'informations des objets suivis, l'une des informations principales est leur déplacement, cette information nous intéressera particulièrement dans notre cas. Dans le but d'illustrer nos propos nous allons étudier quelques logiciels appliquant le tracking visuel. Nous commencerons par l'étude du Logiciel MARGO\\
 
-\section{MARGO (Massively Automated Real-time GUI for Object-tracking)}
+\section{MARGO : Massively Automated Real-time GUI for Object-tracking}
 
-MARGO \cite{MARGO} est un logiciel de tracking visuel développé par des chercheurs de l'université d'Harvard et de celle de Cambridge en partenariat avec Institut de Zoologie de l'Université de Regensburg. Il est passé open source depuis la fin mars 2019, et son environnement est développé en MATLAB. Celui-ci a été conçu pour l'étude de comportements d'animaux et plus précisément du mouvement de certaines espèces comme les mouches ou les bourdons.\\
-Ce logiciel est capable, en théorie, d'effectuer un tracking sur un très grand nombre d'individus (l'ordre du millier), en pratique les expériences publiées ne dépasse pas quelques centaines.\\
-Il a la possibilité de suivre les animaux en temps réel ce qui est un véritable avantage pour les chercheurs étudiant les comportements et plus précisément leurs mouvements. Par exemple, il permet d'envoyer certains stimulus aux animaux et de voir leur réactions instantanées et donc d'adapter les stimulus envoyés pour obtenir le comportement souhaité ou comprendre quels stimuli déclenchent tel ou tel comportement.\\
+MARGO \cite{MARGO} est un logiciel de tracking visuel développé par des chercheurs de l'université d'Harvard et de celle de Cambridge en partenariat avec l'Institut de Zoologie de l'Université de Regensburg. Il est passé open source depuis la fin du mois de mars 2019 et son environnement est développé en MATLAB. Celui-ci a été conçu pour l'étude de comportements d'animaux et plus précisément du mouvement de certaines espèces comme les mouches ou les bourdons.\\
+Ce logiciel est capable, en théorie, d'effectuer un tracking sur un très grand nombre d'individus (l'ordre du millier), en pratique, les expériences publiées ne dépasse pas quelques centaines.\\
+Il a la possibilité de suivre les animaux en temps réel ce qui est un véritable avantage pour les chercheurs étudiant les comportements et plus précisément leurs mouvements. Par exemple, il permet d'envoyer certains stimulus aux animaux et de voir leurs réactions instantanées et donc d'adapter les stimulus envoyés pour obtenir le comportement souhaité ou comprendre quels stimuli déclenchent tel ou tel comportement.\\
 Deux modes principaux sont présents dans ce logiciel :\\
 \begin{itemize}
 
-\item Un mode de tracking individuel qui consiste en l'étude du comportement de plusieurs individus tous isolés les uns des autres. Chaque individu est ainsi disposés dans des boîtes circulaires de contours noirs et de fond translucide. Ces boîtes sont ensuite mise dans une plus grande boite ayant un sol illuminé de lumière blanche. L'individu est ainsi repéré par un simple traitement d'image en repérant la couleur de l'espèce étudiées sur le fond blanc. Avec ce mode on peut ainsi identifier chacun des individus puis suivre leur comportement individuel.\\
-\item Un mode de tracking de groupe qui consiste lui en l'étude du comportement d'un groupe d'individu dans un environnement commun, par exemple un nid de bourdons. L'étude de tel groupe ne nous permet pas d'identifier chacun des individus en lui assignant un numéro mais assure le tracking de chacun des individus. Cela démontre une robustesse dans le résultat fourni.\\
+\item Un mode de tracking individuel qui consiste en l'étude du comportement de plusieurs individus tous isolés les uns des autres. Chaque individu est ainsi disposé dans des boîtes circulaires de contours noirs et de fond translucide. Ces boîtes sont ensuite mises dans une plus grande boite ayant un sol illuminé de lumière blanche. L'individu est ainsi repéré par un simple traitement d'image en recherchant la couleur de l'espèce étudiée sur le fond blanc. Avec ce mode, on peut ainsi identifier chacun des individus puis suivre leur comportement individuel.\\
+\item Un mode de tracking de groupe qui consiste lui en l'étude du comportement d'un groupe d'individu dans un environnement commun, par exemple un nid de bourdons. L'étude de tels groupes ne nous permet pas d'identifier chacun des individus en lui assignant un numéro mais assure le tracking de chacun des individus anonymement. Cela démontre une robustesse dans le résultat fourni.\\
 
 \end{itemize}
 
-Les résultats sont fournis sur l'écran de l'utilisateur et sont représentés par l'image capturée sur laquelle chaque disques colorés représente un individu étudié. Ce système de tracking constitué d'une unique caméra est efficace pour son domaine d'étude. Cela est de plus possible avec un hardware accessible. \\ 
+Les résultats sont fournis sur l'écran de l'utilisateur et sont représentés par l'image capturée sur laquelle chaque disque coloré représente un individu étudié. Ce système de tracking constitué d'une unique caméra est efficace pour son domaine d'étude. Cela est de plus possible avec un hardware accessible. \\ 
 
 [margo article]
 
 
 
-\section{SwisTrack - A Flexible Open Source Tracking Software for Multi-Agent Systems}
+\section{SwisTrack}
 
 SwisTrack \cite{swistrack}  est aussi un logiciel de tracking visuel développé par des chercheurs de l'École Polytechnique Fédérale de Lausanne en Suisse. La dernière version est disponible depuis fin octobre 2008, ce logiciel est open source et a été développé en C++. \\
-Celui-ci a été conçu pour le tracking visuel de système multi-agent. Comme par exemple une population de robots ou d'animaux. De même que pour MARGO, SwisTrack est un logiciel capable de fonctionner directement en temps réels mais également avec un enregistrement vidéo de la population à étudier.\\
-Contrairement au logiciel précédent la taille de la population étudiée ne peut excéder quelques dizaines d'individus. Les exemples vu ne dépasse pas une population de 25 individus.\\
-Plusieurs exemples d'expériences ont été effectué, certaines d'entre elles nous intéresse particulièrement. Au moins deux d'entre elles portaient sur des robots. L'une d'elle portait sur le tracking de plusieurs e-puck \cite{epuck}. Un e-puck est un petit robot (70mm de diamètre par 50mm de hauteur) idéal pour l'enseignement et la recherche. \\
-Afin de pouvoir identifier chaque robot individuellement on place sur lui un certain motif noir et blanc. Ces motifs sont reconnus par un traitement d'image simple et lui associe l'ID correspondant au motif. Par la suite chaque robot est suivi à l'aide de la caméra capturant l'image. Le retour sur l'écran est constitué de l'image filmée ou est ajouté un point coloré sur chaque robot, le rendu est assez similaire à celui du logiciel MARGO.\\
-L'avantage est que l'on peut distinguer chaque robots individuellement et étudier le comportement précis de chacun à tout instant.\\
-De plus le système a été testé pour un groupe de cafards, et fonctionne tout aussi bien. Cependant la vitesse et le comportement des cafards ont posé quelques problèmes. Les cafards sont rapides et peuvent se monter dessus, on ne peut donc pas assurer une identification précise de chaque individus. \\
-Le taux d'erreur est assez faible mais lors de l'observation des résultats on peut remarquer que lorsque deux cafards se monte dessus leur ID sont parfois échangés.\\
-Un autre avantage de ce logiciel est la possibilité d'ajout d'une seconde caméra. Cela augmente la zone d'étude possible. Mais certaines conditions sont requises, il faut que les deux images des caméras ait une zone d'overlap assez grande. \\ 
-En effet la fusion d'image coûterait chère en terme de ressource mémoire, c'est pourquoi dans ce cas, le traitement d'image ne peut plus être effectué en temps réel. Le logiciel ne fusionne pas les flux vidéo vers un unique représentation de l'arène mais maintient deux représentations de l'arène en évaluant le probabilité qu'un robot présent dans une zone commune aux deux caméras soit le même robots.\\
-Comme pour MARGO, SwisTrack ne nécessite pas un hardware de coût démentiel, la plupart des systèmes sont capables de faire tourner ce logiciel.
+Celui-ci a été conçu pour le tracking visuel de systèmes multi-agents, comme par exemple une population de robots ou d'animaux. De même que pour MARGO, SwisTrack est un logiciel capable de fonctionner directement en temps réel mais également avec un enregistrement vidéo de la population à étudier.\\
+Contrairement au logiciel précédent, la taille de la population étudiée ne peut excéder quelques dizaines d'individus. Les exemples vus ne dépassent pas une population de 25 individus.\\
+Plusieurs exemples d'expériences ont été effectués, certaines d'entre elles nous intéressent particulièrement : au moins deux étudient des robots. L'une d'elle portait sur le tracking de plusieurs e-puck \cite{epuck}. Un e-puck est un petit robot (70mm de diamètre par 50mm de hauteur) idéal pour l'enseignement et la recherche. \\
+Afin de pouvoir identifier chaque robot individuellement, on place sur lui un certain motif noir et blanc. Ces motifs sont reconnus par un traitement d'image simple et associés à un identifiant. Par la suite, chaque robot est suivi à l'aide de la caméra capturant l'image. Le retour sur l'écran est constitué de l'image filmée à laquelle on ajoute un point coloré sur chaque robot, le rendu est assez similaire à celui de MARGO.\\
+L'avantage est que l'on peut distinguer chaque robot individuellement et étudier le comportement précis de chacun à tout instant.\\
+De plus, le système a été testé pour un groupe de cafards, et fonctionne tout aussi bien. Cependant la vitesse et le comportement des cafards ont posé quelques problèmes. Les cafards sont rapides et peuvent se monter dessus, on ne peut donc pas assurer une identification précise de chaque individu. \\
+Le taux d'erreur est assez faible mais lors de l'observation des résultats on peut remarquer que lorsque deux cafards se montent dessus leurs identifiants sont parfois échangés.\\
+Un autre avantage de ce logiciel est la possibilité d'ajout d'une seconde caméra, qui augmente la zone d'étude possible. Mais certaines conditions sont requises, il faut que les deux images des caméras aient une zone d'overlap (superposition) assez grande. \\ 
+En effet, la fusion d'image coûte cher en terme de ressource mémoire, c'est pourquoi dans ce cas, le traitement d'image ne peut plus être effectué en temps réel. Le logiciel ne fusionne pas les flux vidéo vers une unique représentation de l'arène mais maintient deux représentations de l'arène en évaluant le probabilité qu'un robot présent dans une zone commune aux deux caméras soit le même robot.\\
+Comme pour MARGO, SwisTrack peut être exécuté sur des systèmes à performances raisonnables. 
 
 
 \section{ARK : Augmented Reality for Kilobots}
 
-ARK \cite{ARK}  est le logiciel sur lequel porte notre projet, celui-ci a été développé par des chercheurs de l'Université de Sheffield. Il est open source comme les deux autres logiciel vu précédemment , il est quand à lui disponible depuis juillet 2017. Développé en C++, il a été spécialement conçu pour l'étude de comportement d'essaim kilobots. \\
+ARK \cite{ARK}  est le logiciel sur lequel porte notre projet, celui-ci a été développé par des chercheurs de l'Université de Sheffield. Disponible depuis 2017, il est open source comme les deux autres logiciels vus précédemment. Développé en C++, il a été spécialement conçu pour l'étude de comportements d'essaims de kilobots. \\
 
-ARK est basé sur un système de caméra placé au dessus de l'arène, capable de détecter chaque kilobots puis de suivre leur déplacement tout au long d'une expérience. Pour cela ARK utilise la bibliothèque de traitement d'image en temps réel d'Intel OpenCV, adapté pour être supportée par la bibliothèque d'accélération de calculs par GPU de Nvidia CUDA. Ainsi ARK est capable d'analyser en temps réel la position de chaque kilobot dans l'arène pour des essaims de plus de 200 robots.\\
+ARK est basé sur un système de caméra placé au-dessus de l'arène, capable de détecter chaque kilobot puis de suivre leur déplacement tout au long d'une expérience. Pour cela ARK utilise la bibliothèque de traitement d'image en temps réel d'Intel OpenCV\cite{opencv}, adaptée pour être supportée par la bibliothèque d'accélération de calculs par GPU de Nvidia CUDA\cite{CUDA}. Ainsi ARK est capable d'analyser en temps réel la position de chaque kilobot dans l'arène pour des essaims de plus de 200 robots.\\
 
 De plus, ARK peut communiquer avec les kilobots via l'OHC (le contrôleur) en temps réel avec un ou tous les kilobots, ce qui lui permet de limiter les actions de ces derniers.\\
-Ce logiciel a certains atouts pour nos objectifs, dans un premier temps il identifie chacun des kilobots et lui assigne un identifiant unique. Cela nous permet de distinguer chacun des kilobots les uns par rapport aux autres et en cela augmenter leurs possibilités. En effet un kilobot ne peut communiquer et localiser les autres kilobots mais à l'aide du contrôleurs cela est dorénavant possible. Le logiciel sait à chaque instant la position de chaque kilobot. Il peut donc communiquer avec chaque kilobot la position d'un objet étant un kilobots. Ceci ouvre le champs des possible dans les domaines nous intéressants.\\
-ARK a plusieurs avantages nous permettant de modéliser des situations d'études différentes. On peut en effet simuler un environnement spécifique pour étudier le comportement des kilobots.\\
-ARK peut donc simuler des éléments sur l'arène en réalité augmenté, simplement en limitant les actions des kilobots lorsqu'ils arrivent dans la zone de l'élément : ils peuvent être contraint de se diriger vers une zone d'intérêt, empêcher d'entrer dans un obstacle ou acquérir une information lorsqu'ils se trouvent dans une zone particulière. On peut donc leur assigner comme consigne la récolte de ressource a amené à un certain endroit de l'arène.\\
-ARK permet aussi de faciliter le mouvement des robots les uns aux autres. Le système de communications des kilobots ne leur permet pas de connaître la position de leur voisin mais uniquement la distance jusqu'à eux. ARK a cette information et peut superviser le mouvement d'un robot par rapport à un autre.
-Comparé aux autres logiciels étudiés, ARK est le seul à utiliser quatre caméras. \\ 
-Dans un premier temps il effectue une calibration des caméras puis il fusionne les images afin d'obtenir une image de l'arène où se situe les kilobots. Sur cette image il détecte les kilobots, la couleur de leur diode et assigne à chacun un identifiant unique. Le logiciel pouvant être exécuter sur un flux vidéo continue (en direct) on peut alors modifier les variables environnementales comme souhaité et contrôler les kilobots comme désirés.\\
-De plus ARK réduit les temps d'expérience, en automatisant plusieurs étapes fastidieuses comme le positionnement initial des robots, la calibration de leurs moteurs et l'assignation d' ID, il a aussi la capacité d'enregistrer les donnés expérimentales. C'est pourquoi le choix d'ARK est un bon choix dans le cadre de notre projet d'étude. \\
-
+Ce logiciel répond parfaitement aux attentes de l'ISIR, dans un premier temps il identifie chacun des kilobots et lui assigne un identifiant unique. Cela nous permet de distinguer chacun des kilobots les uns par rapport aux autres et en cela d'augmenter leurs possibilités. En effet, un kilobot ne peut communiquer et localiser les autres kilobots mais à l'aide du contrôleur cela est dorénavant possible. Le logiciel connait à chaque instant la position de chaque kilobot. Il peut donc communiquer avec chaque kilobot la position d'un de ses homologues. Ce processus multiplie les possibilités d'expérience imaginables avec les kilobots.\\
+ARK a plusieurs avantages nous permettant de modéliser des situations d'étude différentes. \\
+ARK peut par exemple simuler des éléments sur l'arène en réalité augmentée, simplement en limitant les actions des kilobots lorsqu'ils arrivent dans la zone de l'élément : ils peuvent être contraints de se diriger vers une zone d'intérêt, empêchés d'entrer dans un obstacle ou acquérir une information lorsqu'ils se trouvent dans une zone particulière. On peut donc leur assigner la tâche de collecter une ressource simulée sur un point de l'arène à placer ensuite dans une zone de collecte puis étudier leur comportement. \\
+ARK permet aussi de faciliter le mouvement des robots les uns par rapport aux autres. Le système de communication des kilobots ne leur permet pas de connaître la position de leur voisin mais uniquement la distance jusqu'à eux. 
+ARK est donc le seul des logiciels présentés à utiliser quatre caméras. \\ 
+Dans un premier temps, ARK effectue une calibration des caméras puis il fusionne les images afin d'obtenir une vision complète de l'arène où se situent les kilobots. Sur cette image, il détecte les kilobots, la couleur de leur diode et assigne à chacun un identifiant unique. Le logiciel pouvant être exécuté en temps réel, les variables de l'environnement peuvent être modifiées en direct.\\
+De plus, ARK réduit les temps d'expérience, en automatisant plusieurs étapes fastidieuses comme le positionnement initial des robots, la calibration de leurs moteurs et l'assignation d'identifiants et il permet également d'enregistrer les données expérimentales. \\
 
 
 
@@ -134,9 +133,9 @@ De plus ARK réduit les temps d'expérience, en automatisant plusieurs étapes fast
 
 \section{Arène et matériel}
 
-L'arène de l'ISIR est une arène rectangulaire de 152cm sur 72cm dont la surface est en velleda blanc pour permettre les communications. \\
-Elle est équipée de support transversaux suspendus au dessus de sa surface pour y fixer les caméras et l'OHC. La hauteur des supports peut être fixée jusqu'à 120cm de hauteur. \\
-Les 4 caméras sont des Logitech c920 \cite{c920}  qui capturent en 1920x1080 pixels.\\
+L'arène de l'ISIR est une arène rectangulaire de 152 cm sur 72 cm dont la surface est en velleda blanc pour permettre les communications. \\
+Elle est équipée de supports transversaux suspendus au-dessus de sa surface pour y fixer les caméras et l'OHC. La hauteur des supports peut être fixée jusqu'à 120 cm. \\
+Les quatre caméras sont des Logitech c920 \cite{c920}  qui capturent en 1920x1080 pixels.\\
 L'essaim qui évolue sur cette arène est composé d'une centaine de kilobots.
  
 \begin{figure}[H]
@@ -150,51 +149,51 @@ L'essaim qui évolue sur cette arène est composé d'une centaine de kilobots.
 
 \section{Diagnostic et configuration de la machine}
 
-En premier lieu, à notre arrivée à l'ISIR, nous avons eu à faire l'état des lieux des machines disponibles pour en dégager une capable de faire tourner ARK. Plusieurs contraintes matérielles sont liées à ARK, en particulier la carte graphique qui doit être une Nvidia suffisamment performante pour permettre à CUDA d'accélérer openCV en temps réel pendant l'expérience et beaucoup de mémoire vive doit être disponible. \\
-Malheureusement aucune des machines présentes à ce moment là ne satisfaisait ces contraintes, il a donc été décidé d'en commander une nouvelle.\\
+En premier lieu, à notre arrivée à l'ISIR, nous avons eu à faire l'état des lieux des machines disponibles pour en dégager une capable de faire tourner ARK. Plusieurs contraintes matérielles sont liées à ARK, en particulier la carte graphique qui doit être une Nvidia suffisamment performante pour permettre à CUDA d'accélérer OpenCV en temps réel pendant l'expérience, beaucoup de mémoire vive doit ainsi être disponible. \\
+Malheureusement aucune des machines présentes à ce moment-là ne satisfaisait ces contraintes, il a donc été décidé d'en commander une nouvelle.\\
 Le premier mois du projet à donc été consacré à la documentation, l'étude du code et la découverte et la prise en main des kilobots en attendant d'avoir accès à un environnement adapté à l'installation de ARK. \\
 
 \section{Simulation de l'environnement}
 
-A la réception de la machine, nous avons plongé dans la partie de ce projet qui, contre toute attente, s'est révélée être la plus fastidieuse, la mise en de l'environnement et l'installation d'ARK.\\
+À la réception de la machine, nous avons plongé dans la partie de ce projet qui, contre toute attente, s'est révélée être la plus fastidieuse : la mise en place de l'environnement et l'installation d'ARK.\\
 
 \subsection{Structure, dépendances et incompatibilités}
 
-ARK est composé de deux parties distinctes : le logiciel et un programme qui effectue la calibration des caméras.\\
-Ces deux composantes utilisent OpenCV\cite{opencv}  pour faire l'acquisitions des flux vidéo et effectuer les traitements d'image. Ces opérations étant coûteuses, il est difficilement possible de les effectuer en temps réel. C'est pourquoi la version d'OpenCV utilisée est spécifiquement adapté pour utiliser CUDA 8 \cite{CUDA} , une bibliothèque d'accélération de calcul par GPU proposé par Nvidia.\\
+ARK est composé de deux parties distinctes : le logiciel et le programme qui effectue la calibration des caméras.\\
+Ces deux composantes utilisent OpenCV  pour faire l'acquisition des flux vidéo et effectuer les traitements d'image. Ces opérations étant coûteuses, il est difficilement possible de les effectuer en temps réel. C'est pourquoi la version d'OpenCV utilisée est spécifiquement adaptée pour utiliser CUDA 8, une bibliothèque d'accélération de calcul par GPU proposée par Nvidia.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.3]{Images/DependenceARKDocker2.png} 
+\includegraphics[scale=0.4]{Images/DependenceARKDocker2.png} 
 \end{center}
 \caption{Structure de l'environnement d'ARK à Sheffield}
 \label{Structure de l'environnement d'ARK à Sheffield}
 \end{figure}
 
 
-La première problématique que nous avons rencontrée est l'incompatibilité entre notre système d'exploitation et ces bibliothèques : la nouvelle machine était sous Ubuntu 18.04 qui n'est pas compatible avec CUDA 8, et les versions suivantes de CUDA ne sont pas compatibles avec l'adaptation d'openCV.\\
-Nous aurions alors simplement pu passer sous Ubuntu 16.04, mais ces premiers soucis de compatibilité nous ont poussé vers une solution plus robuste qui permettrait à d'autres de ne pas se heurter à des problématiques similaires, simuler l'environnement de ARK avec Docker.\\
+La première problématique que nous avons rencontrée est l'incompatibilité entre notre système d'exploitation et ces bibliothèques : la nouvelle machine était sous Ubuntu 18.04 qui n'est pas compatible avec CUDA 8, et les versions suivantes de CUDA ne sont pas compatibles avec l'adaptation d'OpenCV.\\
+Nous aurions alors simplement pu passer sous Ubuntu 16.04, mais ces premiers problèmes de compatibilité nous ont poussés vers une solution plus robuste qui permettrait à d'autres de ne pas se heurter à des problématiques similaires : simuler l'environnement de ARK avec Docker.\\
 
 
 \subsection{Docker}
 
 Docker \cite{docker}  est un logiciel qui permet d'encapsuler une application avec son environnement et toutes ses dépendances dans une image. Cette image est conservée localement mais peut être facilement transférée à l'aide d'un fichier Dockerfile qui comporte toutes les instructions à exécuter pour recréer l'environnement. L'image peut alors être reconstruite et exécutée dans un conteneur Docker sur n'importe quelle machine à la manière d'une machine virtuelle.
-Dans une optique de robustesse au changement de hardware ou à l'utilisation par d'autres laboratoires de recherche, Docker nous permet donc d'apporter la garantie de pouvoir exécuter ARK rapidement dans les mêmes conditions qu'il est utilisé à l'ISIR.\\
-Nous avons donc décidé de mettre au point une image de l'environnement d'ARK au complet, et nous avons du faire face à plusieurs problématique pour y arriver.\\
+Dans une optique de robustesse au changement de hardware ou à l'utilisation par d'autres laboratoires de recherche, Docker nous permet donc d'apporter la garantie de pouvoir exécuter ARK rapidement dans les mêmes conditions que celles de l'ISIR.\\
+Nous avons donc décidé de mettre au point une image de l'environnement d'ARK au complet, et nous avons dû faire face à plusieurs problématiques pour y arriver.\\
 
-A la création d'un environnement docker, on part d'une version initiale du système d'exploitation. Dans notre cas, nous avons choisi de partir d'une version d'Ubuntu 16.04 déjà équipée de CUDA 8 proposée par Nvidia spécialement pour Docker. A ce moment là, le système ne contient que le strict minimum et n'a que très peu de permissions sur l'utilisation du hardware sur lequel il est réellement exécuté.\\
+À la création d'un environnement Docker, on part d'une version initiale du système d'exploitation. Dans notre cas, nous avons choisi de partir d'une version d'Ubuntu 16.04 déjà équipée de CUDA 8 proposée par Nvidia spécialement pour Docker. À ce moment-là, le système ne contient que le strict minimum et n'a que très peu de permissions sur l'utilisation du hardware sur lequel il est réellement exécuté.\\
 
-Pour assurer les performances du système, il a ensuite fallu assurer que le container Docker puisse accéder à la puissance GPU de la machine. Nous utilisons pour cela Nvidia Docker \cite{nvidiadocker}  développé par Nvidia pour permettre l'exécution d'application accélérée par leur technologie dans des container docker. C'est lui qui assure le lien entre le container et la carte graphique. Il est donc nécessaire de l'installer à côté de Docker pour faire tourner le conteneur.
+Pour assurer les performances du système, il a ensuite fallu faire en sorte que le conteneur Docker puisse accéder à la puissance GPU de la machine. Nous utilisons pour cela Nvidia Docker \cite{nvidiadocker}  développé par Nvidia pour permettre l'exécution d'applications accélérées par sa technologie dans des conteneurs Docker. C'est lui qui assure le lien entre le conteneur et la carte graphique. Il est donc nécessaire de l'installer à côté de Docker pour faire tourner le conteneur.
 
-ARK étant une application dont la force repose entre autre sur son interface graphique, qui permet à l'utilisateur de suivre l'expérience en temps réel, il faut aussi passer l'accès à l'affichage au container. On passe donc au Docker un paramètre display avec le group id et user id de l'utilisateur et la permission est accordée à la construction de l'image.\\
+ARK étant une application dont la force repose notamment sur son interface graphique, qui permet à l'utilisateur de suivre l'expérience en temps réel, il faut aussi passer l'accès à l'affichage au conteneur. On passe donc au Docker un paramètre display avec le group id et user id de l'utilisateur et la permission est accordée à la construction de l'image.\\
 
-Enfin les accès aux caméras et a l'Overhead Controller sont passés en paramètre à l'exécution.\\
+Enfin les accès aux caméras et à l'Overhead Controller sont passés en paramètre à l'exécution.\\
 
-Toutes ces contraintes obligent l'utilisateur à passer certains paramètres à docker pour la construction et l'exécution de l'image. Nous les avons donc encapsulés dans des scripts bash détaillés dans la documentation utilisateur.\\
+Toutes ces contraintes obligent l'utilisateur à passer certains paramètres à Docker pour la construction et l'exécution de l'image. Nous les avons donc encapsulés dans des scripts bash détaillés dans la documentation utilisateur.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.3]{Images/DependenceARKDocker.png} 
+\includegraphics[scale=0.4]{Images/DependenceARKDocker.png} 
 \end{center}
 \caption{Structure de l'environnement d'ARK à l'ISIR}
 \label{Structure de l'environnement d'ARK à l'ISIR}
@@ -203,20 +202,20 @@ Toutes ces contraintes obligent l'utilisateur à passer certains paramètres à doc
 
 \subsection{Corrections des imports}
 
-A ce stade nous avons reproduit exactement l'environnement utilisé par les chercheurs de Sheffield. Cependant nous avons rencontré de nouveaux problèmes de compilations avec ARK et avec le logiciel de calibration. Après recherche, il s'est avéré que certains modules d'OpenCV utilisés par ARK n'existait pas dans la version d'OpenCV recommandée. Nous avons donc contacté le chercheur qui mène le projet ARK. Il nous a répondu qu'une version d'OpenCV 2 était installée à côté d'OpenCV 3, et que certains modules en étaient probablement importés mais pas utilisés. \\
-Des erreurs persistaient après avoir retirer les imports inutiles, et nous avons compris qu'OpenCV 2 était utilisé par défaut pour certaines fonctionnalités ayant été retirées de la version principale d'OpenCV 3. Entre autres, les algorithmes de description d'image SIFT et SURF ont été placé dans le paquet externe d'OpenCV : contrib. Enfin, après l'ajout de ce paquet, nous étions en mesure d'exécuter sans erreurs ARK et son logiciel de calibration.\\
+À ce stade nous avons reproduit exactement l'environnement utilisé par les chercheurs de Sheffield. Cependant nous avons rencontré de nouveaux problèmes de compilation avec ARK et avec le logiciel de calibration. Après recherche, il s'est avéré que certains modules d'OpenCV utilisés par ARK n'existaient pas dans la version d'OpenCV recommandée. Nous avons donc contacté le chercheur qui mène le projet ARK. Il nous a répondu qu'une version d'OpenCV 2 était installée à côté d'OpenCV 3, et que certains modules en étaient probablement importés mais pas utilisés. \\
+Des erreurs persistaient après avoir retiré les imports inutiles, et nous avons compris qu'OpenCV 2 était utilisé par défaut pour certaines fonctionnalités ayant été retirées de la version principale d'OpenCV 3. Entre autres, les algorithmes de description d'image SIFT et SURF ont été placés dans le paquet externe d'OpenCV : contrib. Enfin, après l'ajout de ce paquet, nous étions en mesure d'exécuter sans erreurs ARK et son logiciel de calibration.\\
 
-La simulation de l'environnement est finalement la majeure partie de notre travail sur machine. La découverte de Docker, nos compétences limités en administration système ainsi que la nécessité de tester sur la machine de l'université ont rendu cette tâche extrêmement chronophage.\\
+La simulation de l'environnement est finalement la majeure partie de notre travail sur machine. La découverte de Docker, nos compétences limitées en administration système ainsi que la nécessité de tester sur la machine de l'Université ont rendu cette tâche extrêmement chronophage.\\
 
 \section{Exécution, analyse et remarques}
 
-Nous n'en sommes arrivés au point de pouvoir exécuter le logiciel qu'une semaine avant la date de rendu de ce rapport. Les résultats présentés ici sont les derniers que nous avons eu au laboratoire. La version de ARK est pratiquement la version originale car notre version n'était pas fonctionnelle, elle n'est donc pas adaptée à l'arène de l'ISIR. Ces résultats peuvent donc sans doute être améliorés mais nous avons été pris par le temps. \\
+Nous n'en sommes arrivés au point de pouvoir exécuter le logiciel qu'une semaine avant la date de rendu de ce rapport. Les résultats présentés ici sont les derniers que nous avons obtenus au laboratoire. La version de ARK est pratiquement la version originale car notre version n'était pas fonctionnelle, elle n'est donc pas adaptée à l'arène de l'ISIR. Ces résultats peuvent donc sans doute être améliorés mais nous avons été pris par le temps. \\
 
 
 
 \subsection{Nombre et type de caméras, format de l'arène}
 
-Comme précisé précédemment, ARK ne fonctionne qu'avec 4 caméras. De plus leur résolution n'est pas modifiable dans le logiciel, or Sheffield utilise des caméras format 4:3 et alors que les notre sont en 16:9. Nous avons modifié l'appel à OpenCV qui précise la définition de l'acquisition, sans succès. Le code est très peu commenté, il est très probable que nous ayons manqué une autre instruction impactant ce paramètre.\\
+Comme précisé précédemment, ARK ne fonctionne qu'avec quatre caméras. De plus, leur résolution n'est pas modifiable dans le logiciel, or Sheffield utilise des caméras format 4:3,  tandis que les nôtres sont en 16:9. Nous avons modifié l'appel à OpenCV qui précise la définition de l'acquisition, sans succès. Le code est très peu commenté, il est très probable que nous ayons manqué une autre instruction impactant ce paramètre.\\
 
 De plus chaque caméra filme normalement une zone carrée représentant un quart de l'arène.
 Le logiciel ne peut donc fonctionner parfaitement qu'avec des arènes carrées.\\
@@ -232,60 +231,60 @@ Le logiciel ne peut donc fonctionner parfaitement qu'avec des arènes carrées.\\
 
 \subsection{Calibration}
 
-Le logiciel de calibration est basé sur SURF et la détection de point d'intérêt similaires dans les différentes images. Deux paramètres sont modifiables par l'utilisateur à la main et les configurations dans lesquelles les points d'intérêts se recoupent sont rares.\\
+Le logiciel de calibration est basé sur SURF et la détection de points d'intérêt similaires dans les différentes images. Deux paramètres sont modifiables par l'utilisateur à la main et les configurations dans lesquelles les points d'intérêt se recoupent sont rares.\\
 Cette méthode nécessite alors une zone de chevauchement entre les images qu'on appelle overlap. Nous avons donc testé deux méthodes : un grand overlap en ne filmant que l'arène ou un petit overlap en filmant autour de l'arène également.\\
-Sur les images suivantes les points colorés sont des points d'intérêts. Les bleu foncé sont solitaires et chaque paire parmis les quatre images ont une couleur associée. Ainsi, un point non bleu est commun à deux photos.\\
+Sur les images suivantes les points colorés sont des points d'intérêts. Les bleu foncé sont solitaires et chaque paire parmi les quatre images a une couleur associée. Ainsi, un point non bleu est commun à deux photos.\\
 
 \subsubsection{Petit overlap}
-Dans cette configuration l'overlap se rapproche de celui utilisé a Sheffield par les créateurs d'ARK. En revanche on est contraint de filmer la zone autour de l'arène ce qui pose des problèmes. \\
-En particulier dans l'image ci dessous on remarque que le détecteur associe des points rouge completement differents au niveau des angles de l'arène. En calibrant avec cet overlap nous n'avons eu aucun résultat convenable.\\
+Dans cette configuration l'overlap se rapproche de celui utilisé a Sheffield par les créateurs d'ARK. En revanche nous sommes contraints de filmer la zone autour de l'arène ce qui pose des problèmes. \\
+En particulier dans l'image ci dessous on remarque que le détecteur associe des points rouges complètement différents au niveau des angles de l'arène. En calibrant avec cet overlap nous n'avons eu aucun résultat convenable.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=.18]{Images/OLsmall.png} 
-\includegraphics[scale=0.4]{Images/calolsmall.png} 
+\includegraphics[height=8cm]{Images/OLsmall.png} 
+\includegraphics[height=8cm]{Images/calolsmall.png} 
 \end{center}
 \caption{Détéction des points communs à la calibration avec petit overlap}
 \label{Détéction des points communs à la calibration avec petit overlap}
 \end{figure}
 
 \subsubsection{Grand overlap}
-En grand overlap les caméras filment une grande surface de l'arène en commun. On peut /alors limiter l'acquisition au bords de l'arène. Nous avons réussi à obtenir dans cette configuration une calibration qui ressemble à une arène.\\
+En grand overlap les caméras filment une grande surface de l'arène en commun. On peut /alors limiter l'acquisition aux bords de l'arène. Nous avons réussi à obtenir dans cette configuration une calibration qui ressemble à une arène.\\
 Suite à l'étape de jointure sur les points communs, l'image de l'arène passe par une étape "Squared" qui rend carrée l'arène dont on sélectionne les coins, ce qui constitue une nouvelle contrainte sur la forme possible de l'arène.\\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.18]{Images/OLbig.png} 
-\includegraphics[scale=0.35]{Images/calolbig.png} 
-\includegraphics[scale=0.35]{Images/fusion.png} 
+\includegraphics[height=5.5cm]{Images/OLbig.png} 
+\includegraphics[height=5.5cm]{Images/calolbig.png} 
+\includegraphics[height=5.5cm]{Images/fusion.png} 
 \end{center}
-\caption{Détéction des points communs à la calibration avec grand overlap, puis fusion des images}
-\label{Détéction des points communs à la calibration avec grand overlap, puis fusion des images}
+\caption{Détection des points communs à la calibration avec grand overlap, puis fusion des images}
+\label{Détection des points communs à la calibration avec grand overlap, puis fusion des images}
 \end{figure}
 
- Malheureusement, une fois la calibration donnée à ARK, le résultats n'a plus de sens. Cela nous a permis tout de même de lancer ARK qui ne peut pas faire de capture sans le fichier de calibration, mais nous ne savons pas actuellement d'où vient ce problème. L'image ci-dessous à droite est la capture normalement calibrée faites par ARK, qui tente ensuite d'y détecter des kilobots.\\
+Malheureusement, une fois la calibration donnée à ARK, le résultat n'a plus de sens. Cela nous a permsi tout de même de lancer ARK qui ne peut pas faire de capture sans le fichier de calibration, mais nous ne savons pas actuellement d'où vient ce problème. L'image ci-dessous à droite est la capture normalement calibrée faite par ARK, qui tente ensuite d'y détecter des kilobots.\\
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.4]{Images/detect.png} 
 \end{center}
-\caption{Image renvoyé par ARK a l'identification des kilobots}
-\label{Image renvoyé par ARK a l'identification des kilobots}
+\caption{Image renvoyée par ARK à l'identification des kilobots}
+\label{Image renvoyée par ARK à l'identification des kilobots}
 \end{figure}
 
 
 
 
 
-\subsection{Analyse critique du logiciel et possibilités d'améliorations}
+\subsection{Analyse critique du logiciel et possibilités d'amélioration}
 
-ARK à été développé pour fonctionner dans l'environnement du laboratoire de Sheffield et il nous semble qu'il n'a pas été conçu dans l'optique d'une utilisation dans des environnements différents : beaucoup de choses sont codées en dur, presque rien n'est modifiable depuis le logiciel.\\
-Dans le cadre d'une amélioration du logiciel, beaucoup de piste sont à exploiter pour lui faire gagner en robustesse : la possibilité de modifier le nombre de caméras [cf partie] évidemment, mais aussi un grand nombre de chose sur lequel l'utilisateur devrait avoir la main comme 
+ARK a été développé pour fonctionner dans l'environnement du laboratoire de Sheffield et il nous semble qu'il n'a pas été conçu dans l'optique d'une utilisation dans des environnements différents : beaucoup d'éléments sont codés en dur, presque rien n'est modifiable depuis le logiciel.\\
+Dans le cadre d'une amélioration du logiciel, beaucoup de pistes sont à exploiter pour lui faire gagner en robustesse : la possibilité de modifier le nombre de caméras [cf partie] évidemment, mais aussi un grand nombre de choses sur lesquelles l'utilisateur devrait avoir la main comme 
 -la définition et le format des caméras \\
--la forme de l'arène, on pourrait ainsi masquer la capture et eliminer les contours de l'arène directement dans le logiciel \\
--une automatisation du paramètrage de la détection qui permettrait de trouver les configurations intéressantes rapidement \\
+-la forme de l'arène, on pourrait ainsi masquer la capture et éliminer les contours de l'arène directement dans le logiciel \\
+-une automatisation du paramétrage de la détection qui permettrait de trouver les configurations intéressantes rapidement \\
 
-Ces modifications traversent toutes les parties du logiciel de l'acquisition des images à l'interface utilisateur en passant  par la calibration. Elles sont toutes interdépendantes, et demandent un travail conséquent sans lequel il ne sera surement pas possible de travailler sur l'arène de l'ISIR.  
+Ces modifications traversent toutes les parties du logiciel de l'acquisition des images à l'interface utilisateur en passant  par la calibration. Elles sont toutes interdépendantes, et demandent un travail conséquent sans lequel il ne sera sûrement pas possible de travailler sur l'arène de l'ISIR.  
 
 
 \chapter{Modifications du nombre de caméras nécessaires}
@@ -295,7 +294,7 @@ Ces modifications traversent toutes les parties du logiciel de l'acquisition des
 Nous avons effectué quelques mesures pour vérifier, avec les caméras actuelles, quelles nouvelles configurations nous pouvions proposer. Les caméras de l'ISIR capture selon un angle horizontal d'environ 70° et un angle vertical d'environ 43°.\\
 
 \subsection{Deux caméras}
-Il est possible de couvrir l'arène avec deux caméras. Cela implique de fixer la hauteur au minimum à 95 cm pour que les caméras puissent couvrir l'arène dans toute sa largeur, et donc un overlap relativement conséquent sur la longueur 
+Il est possible de couvrir l'arène avec deux caméras. Cela implique de fixer la hauteur au minimum à 95 cm pour que les caméras puissent couvrir l'arène dans toute sa largeur, et donc un overlap relativement conséquent sur la longueur. 
 
 \begin{figure}[H]
 \begin{center}
@@ -306,38 +305,28 @@ Il est possible de couvrir l'arène avec deux caméras. Cela implique de fixer la 
 \end{figure}
 
 \subsection{Une caméra}
-On arrive à couvrir presque parfaitement l'arène avec une unique caméra placée à environ 115 cm au dessus de l'arène. Cependant il est possible que le fort angle avec les kilobots les plus excentrés provoque des erreurs d'identifications.
+On arrive à couvrir presque parfaitement l'arène avec une unique caméra placée à environ 115 cm au-dessus de l'arène. Cependant, il est possible que le fort angle avec les kilobots les plus excentrés provoque des erreurs d'identifications.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.3]{Images/simucam1.png} 
 \end{center}
-\caption{Couverture de l'arène de l'ISIR avec une caméras}
-\label{Couverture de l'arène de l'ISIR avec une caméras}
+\caption{Couverture de l'arène de l'ISIR avec une caméra}
+\label{Couverture de l'arène de l'ISIR avec une caméra}
 \end{figure}
 
 \section{Modification du code}
 
-Afin de modifier le code pour diminuer le nombre de caméras convenait de modifier les deux parties du logiciel. Nous avons commencé les changements en parallèle du travail effectué sur l'environnement pour prendre de l'avance mais sans pouvoir tester notre version.\\
-Lors de ces changements nous nous sommes heurtés à plusieurs barrières. En effet le code n'étant pas ou peu commenté et remplis d'appels à des bibliothèques que nous ne maîtrisons pas, il nous était difficile de comprendre la façon dont le créateur gérait les caméras. Cette partie du code est majoritairement codé en dur, avec des boucles de 1 à 4 disséminées un peu partout dans le code.\\
-Malheureusement nous n'avons pu exécuter le logiciel que très tardivement, et nous avons découvert à ce moment l'ampleur de ce qu'il faudrait modifier dans ARK pour réduire le nombre de caméra et gérer une arène rectangulaire. Nous n'avons donc pas à ce jour de version fonctionnelle à proposer pour répondre à cette problématique.\\
+Afin de modifier le code pour diminuer le nombre de caméras, il convenait de modifier les deux parties du logiciel. Nous avons commencé les changements en parallèle du travail effectué sur l'environnement pour prendre de l'avance mais sans pouvoir tester notre version.\\
+Lors de ces changements, nous nous sommes heurtés à plusieurs barrières. En effet, le code n'étant pas ou peu commenté et rempli d'appels à des bibliothèques que nous ne maîtrisons pas, il nous était difficile de comprendre la façon dont le créateur gérait les caméras. Cette partie du code est majoritairement codée en dur, avec des boucles de 1 à 4 disséminées un peu partout dans le code.\\
+Malheureusement, nous n'avons pu exécuter le logiciel que très tardivement, et nous avons découvert à ce moment l'ampleur de ce qu'il faudrait modifier dans ARK pour réduire le nombre de caméras et gérer une arène rectangulaire. Nous n'avons donc pas à ce jour de version fonctionnelle à proposer pour répondre à cette problématique.\\
 
 \chapter{Horizon du projet et conclusion}
 
-A l'issue de ce projet, nous avons mis au point un environnement ARK encapsulé dans une image Docker complet et dans lequel les différentes erreurs liées à l'importation ont été corrigée. Nous n'avons pas eu le temps d'aller jusqu'à une modification fonctionnelle du logiciel, mais nous espérons avoir fournis des analyses qui permettront que cette dernière puisse être faite de façon robuste et efficace.\\
-Pour nous cette expérience fut totalement différente de celle que nous attendions, mais nous avons eu l'occasion d'apprendre beaucoup sur l'administration système et l'utilisation de conteneur Docker. \\
+À l'issue de ce projet, nous avons mis au point un environnement ARK encapsulé dans une image Docker complet et dans lequel les différentes erreurs liées à l'importation ont été corrigées. Nous n'avons pas eu le temps d'aller jusqu'à une modification fonctionnelle du logiciel, mais nous espérons avoir fourni des analyses qui permettront que cette dernière puisse être faite de façon robuste et efficace.\\
+Pour nous, cette expérience fut totalement différente de celle que nous attendions, mais nous avons eu l'occasion d'apprendre beaucoup sur l'administration système et l'utilisation de conteneur Docker. \\
 En parallèle nous avons découvert un petite facette de la robotique en essaim, ce qui fut très intéressant.\\
 
-
-
-Compiler : latex, bibtex, latex.
-
-
-\begin{itemize}
-
-\item **Element liste
-
-\end{itemize}
 
 
 \bibliography{biblio}{}
