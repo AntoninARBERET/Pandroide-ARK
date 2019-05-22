@@ -67,9 +67,13 @@ You will need to give to your container acces on your GPU. We use Nvidia Docker,
 The Docker image is not available pre-built on Docker Hub because you need to build it on your own computer or it will not have the permission to use your display. \\
 Just download or clone this repository : \hyperref[arkrepo]{https://github.com/AntoninARBERET/Pandroide-ARK} . In the Docker directory you will find the Dockerfile, containing every instructions Docker needs to build the image. The two bash scripts with it just run the build and run command with the right parameters. \\
 
-To build the image just execute \codeword{build_ark_image.sh}, it doesn't need any parameters but it will access your user id and group id. This step takes several minutes. When it's done, the \codeword{docker images} command should show a new Docker image tagged ark:latest.\\
+To build the image execute :\\
+ \codeword{build_ark_image.sh}\\
+ It doesn't need any parameters but it will access your user id and group id. This step takes several minutes. When it's done, the \codeword{docker images} command should show a new Docker image tagged ark:latest.\\
 
-To run the image, execute \codeword{run_ark_image.sh nbcams} where you give nbcams as a parameter which is the number of cam you want to use in your Docker container. The container will be launched directly in the current terminal inside the directory containing ARK and ARK calibration.
+To run the image, execute : \\ 
+ \codeword{run_ark_image.sh nbcams ohc} \\
+\codeword{nbcams} and \codeword{ohc} should be numbers, respectively the number of cameras you want to use in your Docker container and 0 if you don't want to use the overhead controller. Both have a default value and if you don't specify a value explicitly, the script considers four cameras and an OHC.\\The container will be launched directly in the current terminal inside the directory containing ARK and ARK calibration.
 
 
 
